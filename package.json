@@ -1,0 +1,32 @@
+{
+  "name": "nojquery",
+  "version": "1.0.0",
+  "description": "Useful methods to replace jQuery",
+  "main": "NoJQuery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iondrimba/NoJQuery.git"
+  },
+  "keywords": [
+    "No",
+    "jQuery",
+    "DOM",
+    "method"
+  ],
+  "author": "Ion D. Filho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iondrimba/NoJQuery/issues"
+  },
+  "homepage": "https://github.com/iondrimba/NoJQuery#readme",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-http-server": "^1.13.0",
+    "grunt-serve": "^0.1.6",
+    "requirejs": "^2.1.20"
+  }
+}
