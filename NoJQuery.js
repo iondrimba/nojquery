@@ -97,9 +97,13 @@
             return this.find(selector);
         },
         find: function(selector) {
-            var elmts = document.querySelectorAll(selector);
-            var total = elmts.length,
+            var elmts = [],
+                total = 0,
                 i = 0;
+
+
+            elmts = document.querySelectorAll(selector);
+            total = elmts.length;
 
             for (i; i < total; i++) {
                 this.elmts[i] = elmts[i];
@@ -204,8 +208,15 @@
 
             return this;
         },
-        html: function(elmt, string) {
-            elmt.innerHTML = string;
+        html: function(string) {
+            var total = this.elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                this.elmts[i].innerHTML = string;
+            }
+
+            return this;
         },
         text: function(string) {
             var total = this.elmts.length,
@@ -217,15 +228,38 @@
 
             return this;
         },
-        getAttr: function(elmt, attr) {
-            var result = elmt.getAttribute(attr);
+        getAttr: function(attr) {
+            var total = 1,
+                i = 0,
+                result = '';
+
+            for (i; i < total; i++) {
+                result = this.elmts[i].getAttribute(attr);
+            }
             return result;
         },
-        setAttr: function(elmt, attr, val) {
-            elmt.setAttribute(attr, val);
+        setAttr: function(attr, val) {
+            var total = this.elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                this.elmts[i].setAttribute(attr, val);
+            }
+            return this;
         },
         remove: function(elmt) {
-            elmt.parentNode.removeChild(NoJQuery.elmt);
+            var total = this.elmts.length,
+                i = 0,
+                elmt = {},
+                removed = [];
+
+            for (i; i < total; i++) {
+                elmt = this.elmts[i];
+                elmt.parentNode.removeChild(elmt);
+                removed[i] = elmt;
+            }
+            return removed;
+
         },
         prev: function(elmt) {
             var prevElmt = elmt.previousElementSibling;
@@ -252,12 +286,34 @@
             return tmp.body.children;
         },
         cast: function(node) {
-            this.elmts=[];
+            this.elmts = [];
             this.elmts.push(node);
 
             return this;
         }
     };
 
-    return NoJQuery;
+    // var NoJQuery = function() {
+    //     var elmts = [];
+    //     function find (selector) {
+    //         var total = 0,
+    //             nodes = [],
+    //             i = 0;
+
+    //         nodes = document.querySelectorAll(selector);
+    //         total = nodes.length;
+
+    //         for (i; i < total; i++) {
+    //             elmts[i] = nodes[i];
+    //         }
+    //     };
+    //     return function(selector) {
+    //         find: function(selector) {
+    //             find(selector);
+    //             return this;
+    //         };
+    //     };
+    // };
+
+    return NoJQuery();
 });

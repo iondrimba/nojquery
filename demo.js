@@ -3,9 +3,8 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     console.log('loaded', $$);
 
     function findElements() {
-        var elmts = $$.find('li');
+        var elmts = $$('li');
         console.log(elmts);
-        return $$.find('li');
     };
 
     function click(evt) {
@@ -77,25 +76,51 @@ requirejs(['NoJQuery'], function(NoJQuery) {
         $$.find('li').empty();
     };
 
-    function onEachText(elmt, index) {
+    function onEachTextContent(elmt, index) {
         $$.cast(elmt).text('text' + index);
     };
 
+    function onEachHtmlContent(elmt, index) {
+        $$.cast(elmt).html('<div> DIV -' + index + '</div>');
+    };
+
     function textContent() {
-        $$.find('li').each(onEachText);
+        $$.find('li').each(onEachTextContent);
+    };
+
+    function htmlContent() {
+        $$.find('li').each(onEachHtmlContent);
+    };
+
+    function getAttr() {
+        var result = $$.find('#btn-addlistener').getAttr('id');
+        console.log(result);
+    };
+
+    function setAttr() {
+        var result = $$.find('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
+        console.log(result.elmts);
+    };
+
+    function removeElmts() {
+        var result = $$.find('li').find('div');
+        console.log(result);
     };
 
     findElements();
-    addClass();
-    hasClass();
-    removeClass();
-    addClick();
-    //removeClick();
-    contains();
-    addListener();
-    removeListener();
-    each();
-    empty();
-    textContent();
-
+    //addClass();
+    // hasClass();
+    // removeClass();
+    // addClick();
+    // //removeClick();
+    // contains();
+    // addListener();
+    // removeListener();
+    // each();
+    // empty();
+    // textContent();
+    // htmlContent();
+    // getAttr();
+    // setAttr();
+    // removeElmts();
 });
