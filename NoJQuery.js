@@ -98,7 +98,12 @@
         },
         find: function(selector) {
             var elmts = document.querySelectorAll(selector);
-            this.elmts = elmts;
+            var total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                this.elmts[i] = elmts[i];
+            }
             return this;
         },
         closestParent: function(child, className) {
@@ -125,7 +130,6 @@
                 i = 0;
             for (i; i < total; i++) {
                 this.elmts[i].removeEventListener(eventName, eventHandler, false);
-                console.log(this.elmts[i]);
             }
 
             return this;
@@ -133,6 +137,7 @@
         addClass: function(className) {
             var total = this.elmts.length,
                 i = 0;
+
             for (i; i < total; i++) {
                 if (this.elmts[i].classList) {
                     this.elmts[i].classList.add(className);
@@ -144,9 +149,10 @@
             return this;
         },
         hasClass: function(className) {
-            var result = false;
-            var total = this.elmts.length,
+            var result = false,
+                total = this.elmts.length,
                 i = 0;
+
             for (i; i < total; i++) {
                 if (this.elmts[i].classList) {
                     result = this.elmts[i].classList.contains(className);
@@ -173,18 +179,43 @@
         redraw: function(elmt) {
             elmt.offsetHeight;
         },
-        containsSelector: function(elmt, selector) {
-            var result = elmt.querySelector(selector) !== null;
+        contains: function(selector) {
+            var result = {},
+                total = this.elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                result = this.elmts[i].querySelector(selector);
+            }
             return result;
         },
-        each: function(selector, eachFunc) {
-            var elmts = document.querySelectorAll(selector);
-            Array.prototype.forEach.call(elmts, function(el, i) {
-                eachFunc(el, i);
+        each: function(callback) {
+            Array.prototype.forEach.call(this.elmts, function(el, i) {
+                callback(el, i);
             });
         },
-        empty: function(elmt) {
-            elmt.innerHTML = '';
+        empty: function() {
+            var total = this.elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                this.elmts[i].innerHTML = '';
+            }
+
+            return this;
+        },
+        html: function(elmt, string) {
+            elmt.innerHTML = string;
+        },
+        text: function(string) {
+            var total = this.elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                this.elmts[i].textContent = string;
+            }
+
+            return this;
         },
         getAttr: function(elmt, attr) {
             var result = elmt.getAttribute(attr);
@@ -207,12 +238,7 @@
         proxy: function(fn, context) {
             fn.bind(context);
         },
-        html: function(elmt, string) {
-            elmt.innerHTML = string;
-        },
-        text: function(elmt, string) {
-            elmt.textContent = string;
-        },
+
         append: function(elmt, el) {
             elmt.appendChild(el);
         },
@@ -224,6 +250,12 @@
             var tmp = document.implementation.createHTMLDocument();
             tmp.body.innerHTML = str;
             return tmp.body.children;
+        },
+        cast: function(node) {
+            this.elmts=[];
+            this.elmts.push(node);
+
+            return this;
         }
     };
 
