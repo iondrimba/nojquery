@@ -3,130 +3,126 @@ requirejs(['NoJQuery'], function(NoJQuery) {
 
     function findElements() {
         var elmts = $$('li').find('div').find('a');
-        elmts.each(function(elmt, index){
+        elmts.each(function(elmt, index) {
             console.log(elmt, index);
         });
 
         elmts = $$('li');
-        elmts.each(function(elmt, index){
-            console.log(elmt, index);
+        elmts.each(function(elmt, index) {
+            //console.log(elmt, index);
         });
-
-    };
-
-    function click(evt) {
-        console.log('click', evt.target.id);
-    };
-
-    function clickContains() {
-        var result = $$.find('.lista-contains').contains('#first-li');
-        console.log(result);
-        result = $$.find('.lista-contains').contains('.second-li');
-        console.log(result);
-        result = $$.find('.lista-contains').contains('.second');
-        console.log(result);
-    };
-
-    function addListenerClick() {
-        console.log('Listener click added');
-    };
-
-    function removeListenerClick() {
-        console.log('Listener click removed');
-        $$.find('#btn-addlistener').off('click', addListenerClick);
     };
 
     function addClass() {
-        return $$.find('li').addClass('colored-background');
-    };
-
-    function removeClass() {
-        return $$.find('li').addClass('colored-background').removeClass('colored-background');
+        return $$('li').addClass('colored-background');
     };
 
     function hasClass() {
-        var bool = $$.find('li').addClass('colored-background').hasClass('colored-background');
-        console.log('hasClass', bool);
+        var bool = $$('li').hasClass('colored-background');
+        //console.log('hasClass', bool);
     };
 
-    function addClick() {
-        $$.find('button').on('click', click);
-    };
-
-    function removeClick() {
-        $$.find('#btn-contains').on('click', clickContains);
+    function removeClass() {
+        return $$('li').removeClass('colored-background');
     };
 
     function contains() {
-        $$.find('button').off('click', click);
-    };
-
-    function addListener() {
-        $$.find('#btn-addlistener').on('click', addListenerClick);
-    };
-
-    function removeListener() {
-        $$.find('#btn-removelistener').on('click', removeListenerClick);
-    };
-
-    function onEach(elmt, index) {
-        $$.cast(elmt).addClass('colored-background');
-    };
-
-    function each() {
-        $$.find('button').each(onEach);
-        console.log('----');
-        $$.find('li').each(onEach);
+        var result = $$('li').contains('a');
+        //console.log(result);
     };
 
     function empty() {
-        $$.find('li').empty();
-    };
-
-    function onEachTextContent(elmt, index) {
-        $$.cast(elmt).text('text' + index);
-    };
-
-    function onEachHtmlContent(elmt, index) {
-        $$.cast(elmt).html('<div> DIV -' + index + '</div>');
+        $$('li').find('a').empty();
     };
 
     function textContent() {
-        $$.find('li').each(onEachTextContent);
+        $$('li').find('a').text('Link A');
     };
 
     function htmlContent() {
-        $$.find('li').each(onEachHtmlContent);
+        $$('li').each(onEachHtmlContent);
     };
 
-    function getAttr() {
-        var result = $$.find('#btn-addlistener').getAttr('id');
-        console.log(result);
+    function onEachHtmlContent(elmt, index) {
+        $$(elmt).html('<div> DIV -' + index + '</div>');
     };
 
-    function setAttr() {
-        var result = $$.find('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
-        console.log(result.elmts);
-    };
+    // function click(evt) {
+    //     console.log('click', evt.target.id);
+    // };
 
-    function removeElmts() {
-        var result = $$.find('li').find('div');
-        console.log(result);
-    };
+    // function clickContains() {
+    //     var result = $$.find('.lista-contains').contains('#first-li');
+    //     console.log(result);
+    //     result = $$.find('.lista-contains').contains('.second-li');
+    //     console.log(result);
+    //     result = $$.find('.lista-contains').contains('.second');
+    //     console.log(result);
+    // };
+
+    // function addListenerClick() {
+    //     console.log('Listener click added');
+    // };
+
+    // function removeListenerClick() {
+    //     console.log('Listener click removed');
+    //     $$.find('#btn-addlistener').off('click', addListenerClick);
+    // };
+
+    // function addClick() {
+    //     $$.find('button').on('click', click);
+    // };
+
+    // function removeClick() {
+    //     $$.find('#btn-contains').on('click', clickContains);
+    // };
+
+    // function addListener() {
+    //     $$.find('#btn-addlistener').on('click', addListenerClick);
+    // };
+
+    // function removeListener() {
+    //     $$.find('#btn-removelistener').on('click', removeListenerClick);
+    // };
+
+    // function onEach(elmt, index) {
+    //     $$.cast(elmt).addClass('colored-background');
+    // };
+
+    // function each() {
+    //     $$.find('button').each(onEach);
+    //     console.log('----');
+    //     $$.find('li').each(onEach);
+    // };
+    // function onEachTextContent(elmt, index) {
+    //     $$.cast(elmt).text('text' + index);
+    // };    
+    // function getAttr() {
+    //     var result = $$.find('#btn-addlistener').getAttr('id');
+    //     console.log(result);
+    // };
+    // function setAttr() {
+    //     var result = $$.find('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
+    //     console.log(result.elmts);
+    // };
+    // function removeElmts() {
+    //     var result = $$.find('li').find('div');
+    //     console.log(result);
+    // };
 
     findElements();
-    //addClass();
-    // hasClass();
-    // removeClass();
+    addClass();
+    hasClass();
+    removeClass();
+    contains();
+    empty();
+    textContent();
+    htmlContent();
     // addClick();
-    // //removeClick();
-    // contains();
+    // removeClick();    
     // addListener();
     // removeListener();
-    // each();
-    // empty();
-    // textContent();
-    // htmlContent();
+    // each();    
     // getAttr();
     // setAttr();
     // removeElmts();

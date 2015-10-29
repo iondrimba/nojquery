@@ -305,7 +305,6 @@
 
             elmts = [];
             currentSelector += ' ' + selector;
-            console.log(currentSelector);
             nodes = document.querySelectorAll(currentSelector);
             total = nodes.length;
 
@@ -319,11 +318,98 @@
                 callback(el, i);
             });
         };
+        self.addClass = function(className) {
+            var total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                if (elmts[i].classList) {
+                    elmts[i].classList.add(className);
+                } else {
+                    elmts[i].className += ' ' + className;
+                }
+            }
+
+            return self;
+        };
+        self.hasClass = function(className) {
+            var result = false,
+                total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                if (elmts[i].classList) {
+                    result = elmts[i].classList.contains(className);
+                } else {
+                    result = new RegExp('(^| )' + className + '( |$)', 'gi').test(elmts[i].className);
+                }
+            }
+
+            return result;
+        };
+        self.removeClass = function(className) {
+            var total = elmts.length,
+                i = 0;
+            for (i; i < total; i++) {
+                if (elmts[i].classList) {
+                    elmts[i].classList.remove(className);
+                } else {
+                    elmts[i].className = elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            }
+
+            return self;
+        };
+        self.contains = function(selector) {
+            var result = {},
+                total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                result = elmts[i].querySelector(selector);
+                if (result) {
+                    break;
+                }
+            }
+            return result;
+        };
+        self.empty = function() {
+            var total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                elmts[i].innerHTML = '';
+            }
+
+            return self;
+        };
+        self.text = function(string) {
+            var total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                elmts[i].textContent = string;
+            }
+            return self;
+        };
+        self.html = function(string) {
+            var total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                elmts[i].innerHTML = string;
+            }
+            return self;
+        };
+
         return function(selector) {
             if (currentSelector) {
                 currentSelector = '';
             }
-            self.find(selector);
+            if (typeof selector === 'string') {
+                self.find(selector);
+            }
+
             return self;
         };
     };
