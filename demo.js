@@ -1,10 +1,17 @@
 requirejs(['NoJQuery'], function(NoJQuery) {
     var $$ = NoJQuery;
-    console.log('loaded', $$);
 
     function findElements() {
-        var elmts = $$('li');
-        console.log(elmts);
+        var elmts = $$('li').find('div').find('a');
+        elmts.each(function(elmt, index){
+            console.log(elmt, index);
+        });
+
+        elmts = $$('li');
+        elmts.each(function(elmt, index){
+            console.log(elmt, index);
+        });
+
     };
 
     function click(evt) {
