@@ -93,23 +93,6 @@
     //             NoJQuery.ajax.onLoad(options, options.request.responseText);
     //         }
     //     },
-    //     select: function(selector) {
-    //         return this.find(selector);
-    //     },
-    //     find: function(selector) {
-    //         var elmts = [],
-    //             total = 0,
-    //             i = 0;
-
-
-    //         elmts = document.querySelectorAll(selector);
-    //         total = elmts.length;
-
-    //         for (i; i < total; i++) {
-    //             this.elmts[i] = elmts[i];
-    //         }
-    //         return this;
-    //     },
     //     closestParent: function(child, className) {
     //         if (!child || child === document) {
     //             return null;
@@ -138,128 +121,8 @@
 
     //         return this;
     //     },
-    //     addClass: function(className) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             if (this.elmts[i].classList) {
-    //                 this.elmts[i].classList.add(className);
-    //             } else {
-    //                 this.elmts[i].className += ' ' + className;
-    //             }
-    //         }
-
-    //         return this;
-    //     },
-    //     hasClass: function(className) {
-    //         var result = false,
-    //             total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             if (this.elmts[i].classList) {
-    //                 result = this.elmts[i].classList.contains(className);
-    //             } else {
-    //                 result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
-    //             }
-    //         }
-
-    //         return result;
-    //     },
-    //     removeClass: function(className) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-    //         for (i; i < total; i++) {
-    //             if (this.elmts[i].classList) {
-    //                 this.elmts[i].classList.remove(className);
-    //             } else {
-    //                 this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-    //             }
-    //         }
-
-    //         return this;
-    //     },
     //     redraw: function(elmt) {
     //         elmt.offsetHeight;
-    //     },
-    //     contains: function(selector) {
-    //         var result = {},
-    //             total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             result = this.elmts[i].querySelector(selector);
-    //         }
-    //         return result;
-    //     },
-    //     each: function(callback) {
-    //         Array.prototype.forEach.call(this.elmts, function(el, i) {
-    //             callback(el, i);
-    //         });
-    //     },
-    //     empty: function() {
-    //         var total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             this.elmts[i].innerHTML = '';
-    //         }
-
-    //         return this;
-    //     },
-    //     html: function(string) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             this.elmts[i].innerHTML = string;
-    //         }
-
-    //         return this;
-    //     },
-    //     text: function(string) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             this.elmts[i].textContent = string;
-    //         }
-
-    //         return this;
-    //     },
-    //     getAttr: function(attr) {
-    //         var total = 1,
-    //             i = 0,
-    //             result = '';
-
-    //         for (i; i < total; i++) {
-    //             result = this.elmts[i].getAttribute(attr);
-    //         }
-    //         return result;
-    //     },
-    //     setAttr: function(attr, val) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-
-    //         for (i; i < total; i++) {
-    //             this.elmts[i].setAttribute(attr, val);
-    //         }
-    //         return this;
-    //     },
-    //     remove: function(elmt) {
-    //         var total = this.elmts.length,
-    //             i = 0,
-    //             elmt = {},
-    //             removed = [];
-
-    //         for (i; i < total; i++) {
-    //             elmt = this.elmts[i];
-    //             elmt.parentNode.removeChild(elmt);
-    //             removed[i] = elmt;
-    //         }
-    //         return removed;
-
     //     },
     //     prev: function(elmt) {
     //         var prevElmt = elmt.previousElementSibling;
@@ -401,6 +264,66 @@
             }
             return self;
         };
+        self.getAttr = function(attr) {
+            var total = 1,
+                i = 0,
+                result = '';
+
+            for (i; i < total; i++) {
+                result = elmts[i].getAttribute(attr);
+            }
+            return result;
+        };
+        self.setAttr = function(attr, val) {
+            var total = elmts.length,
+                i = 0;
+
+            for (i; i < total; i++) {
+                elmts[i].setAttribute(attr, val);
+            }
+            return self;
+        };
+        self.remove = function(elmt) {
+            var total = elmts.length,
+                i = 0,
+                elmt = {},
+                removed = [];
+
+            for (i; i < total; i++) {
+                elmt = elmts[i];
+                elmt.parentNode.removeChild(elmt);
+                removed[i] = elmt;
+            }
+            return removed;
+        };
+        self.prev = function(elmt) {
+            var total = elmts.length,
+                i = 0,
+                nextElemt;
+
+            try {
+                for (i; i < total; i++) {
+                    elmts[i] = elmts[i].previousElementSibling;
+                }
+            } catch (ex) {
+                console.warn('prev::', ex.message);
+            }
+            return self;
+        };
+        self.next = function() {
+            var total = elmts.length,
+                i = 0,
+                nextElemt;
+                
+            try {
+                for (i; i < total; i++) {
+                    elmts[i] = elmts[i].nextElementSibling;
+                }
+            } catch (ex) {
+                console.warn('next::', ex.message);
+            }
+            return self;
+        };
 
         return function(selector) {
             if (currentSelector) {
@@ -408,6 +331,8 @@
             }
             if (typeof selector === 'string') {
                 self.find(selector);
+            } else {
+                elmts.push(selector);
             }
 
             return self;

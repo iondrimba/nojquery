@@ -28,7 +28,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
 
     function contains() {
         var result = $$('li').contains('a');
-        //console.log(result);
+        console.log(result);
     };
 
     function empty() {
@@ -45,6 +45,29 @@ requirejs(['NoJQuery'], function(NoJQuery) {
 
     function onEachHtmlContent(elmt, index) {
         $$(elmt).html('<div> DIV -' + index + '</div>');
+    };
+
+    function getAttr() {
+        var result = $$('#btn-addlistener').getAttr('id');
+        console.log(result);
+    };
+
+    function setAttr() {
+        var result = $$('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
+        console.log(result);
+    };
+
+    function removeElmts() {
+        var result = $$('li').find('div').remove();
+        console.log(result);
+    };
+
+    function next() {
+        var result = $$('#btn-addlistener').next().remove();
+    };
+
+    function prev() {
+        $$('#btn-removeclass').prev().remove();
     };
 
     // function click(evt) {
@@ -105,10 +128,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     //     var result = $$.find('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
     //     console.log(result.elmts);
     // };
-    // function removeElmts() {
-    //     var result = $$.find('li').find('div');
-    //     console.log(result);
-    // };
+
 
     findElements();
     addClass();
@@ -118,12 +138,16 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     empty();
     textContent();
     htmlContent();
+    getAttr();
+    setAttr();
+    removeElmts();
+    next();
+    prev();
     // addClick();
     // removeClick();    
     // addListener();
     // removeListener();
-    // each();    
-    // getAttr();
-    // setAttr();
-    // removeElmts();
+    // each();        
+
+
 });
