@@ -19,7 +19,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
 
     function hasClass() {
         var bool = $$('li').hasClass('colored-background');
-        //console.log('hasClass', bool);
+        console.log('hasClass', bool);
     };
 
     function removeClass() {
@@ -54,7 +54,6 @@ requirejs(['NoJQuery'], function(NoJQuery) {
 
     function setAttr() {
         var result = $$('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
-        console.log(result);
     };
 
     function removeElmts() {
@@ -68,6 +67,10 @@ requirejs(['NoJQuery'], function(NoJQuery) {
 
     function prev() {
         $$('#btn-removeclass').prev().remove();
+    };
+
+    function append() {
+        $$('li').append('<div>hello append</div>');
     };
 
     // function click(evt) {
@@ -143,6 +146,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     removeElmts();
     next();
     prev();
+    append();
     // addClick();
     // removeClick();    
     // addListener();

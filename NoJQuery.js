@@ -314,7 +314,7 @@
             var total = elmts.length,
                 i = 0,
                 nextElemt;
-                
+
             try {
                 for (i; i < total; i++) {
                     elmts[i] = elmts[i].nextElementSibling;
@@ -325,11 +325,64 @@
             return self;
         };
 
+        self.append = function(el) {
+            var total = elmts.length,
+                i = 0;
+            try {
+                for (i; i < total; i++) {
+                    if (isString(el)) {
+                        self.html(el);
+                    } else {
+                        elmts[i].appendChild(el);
+                    }
+
+                }
+            } catch (ex) {
+                console.warn('append::', ex.message);
+            }
+            return self;
+
+        };
+
+
+        // self.prepend = function(el) {
+        //     var total = elmts.length,
+        //         i = 0,
+        //         parent;
+
+        //     try {
+        //         for (i; i < total; i++) {
+        //             parent = elmts[i].parent;
+        //             parent.insertBefore(el, parent.firstChild);
+        //         }
+        //     } catch (ex) {
+        //         console.warn('prepend::', ex.message);
+        //     }
+        //     return self;
+        // };
+
+        // function HTMLParser(aHTMLString) {
+        //     var html = document.implementation.createDocument("http://www.w3.org/1999/xhtml", "html", null),
+        //         body = document.createElementNS("http://www.w3.org/1999/xhtml", "body");
+        //     html.documentElement.appendChild(body);
+
+        //     body.appendChild(Components.classes["@mozilla.org/feed-unescapehtml;1"]
+        //         .getService(Components.interfaces.nsIScriptableUnescapeHTML)
+        //         .parseFragment(aHTMLString, false, null, body));
+
+        //     return body;
+        // };
+
+        function isString(selector) {
+            var result = (typeof selector === 'string');
+            return result;
+        };
+
         return function(selector) {
             if (currentSelector) {
                 currentSelector = '';
             }
-            if (typeof selector === 'string') {
+            if (isString(selector)) {
                 self.find(selector);
             } else {
                 elmts.push(selector);
