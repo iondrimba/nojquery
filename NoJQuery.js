@@ -93,16 +93,7 @@
     //             NoJQuery.ajax.onLoad(options, options.request.responseText);
     //         }
     //     },
-    //     closestParent: function(child, className) {
-    //         if (!child || child === document) {
-    //             return null;
-    //         }
-    //         if (child.classList.contains(className)) {
-    //             return child;
-    //         } else {
-    //             return NoJQuery.closestParent(child.parentNode, className);
-    //         }
-    //     },
+
     //     on: function(eventName, eventHandler) {
     //         var total = this.elmts.length,
     //             i = 0;
@@ -124,30 +115,12 @@
     //     redraw: function(elmt) {
     //         elmt.offsetHeight;
     //     },
-    //     prev: function(elmt) {
-    //         var prevElmt = elmt.previousElementSibling;
-    //         return prevElmt;
-    //     },
-    //     next: function(elmt) {
-    //         var nextElmt = elmt.nextElementSibling;
-    //         return nextElmt;
-    //     },
+
     //     proxy: function(fn, context) {
     //         fn.bind(context);
     //     },
 
-    //     append: function(elmt, el) {
-    //         elmt.appendChild(el);
-    //     },
-    //     prepend: function(elmt, el) {
-    //         var parent = elmt;
-    //         parent.insertBefore(el, parent.firstChild);
-    //     },
-    //     parseHtml: function(str) {
-    //         var tmp = document.implementation.createHTMLDocument();
-    //         tmp.body.innerHTML = str;
-    //         return tmp.body.children;
-    //     },
+
     //     cast: function(node) {
     //         this.elmts = [];
     //         this.elmts.push(node);
@@ -353,7 +326,8 @@
 
             try {
                 for (i; i < total; i++) {
-                    parent = elmts[i].parentNode;
+                    parent = elmts[i].parentNode || elmts[i].parent;
+                    console.log(elmts[i]);
                     if (isString(el)) {
                         innerEmlt = parseHTML(el);
                     }
@@ -365,10 +339,35 @@
             return self;
         };
 
+        self.on = function(eventName, eventHandler) {
+            var total = elmts.length,
+                i = 0;
+            for (i; i < total; i++) {
+                elmts[i].addEventListener(eventName, eventHandler, false);
+            }
+
+            return self;
+        };
+        self.off = function(eventName, eventHandler) {
+            var total = elmts.length,
+                i = 0;
+            for (i; i < total; i++) {
+                elmts[i].removeEventListener(eventName, eventHandler, false);
+            }
+
+            return self;
+        };
+
         function parseHTML(html) {
-            var t = document.createElement('template');
+            var t = document.createElement('template'),
+                content,
+                nodes;
+
             t.innerHTML = html;
-            return t.content.cloneNode(true);
+            content = t.content || t.firstChild;
+            nodes = content.cloneNode(true);
+
+            return nodes;
         }
 
         function isString(selector) {
