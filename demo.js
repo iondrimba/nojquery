@@ -72,6 +72,10 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     function append() {
         $$('li').append('<div>hello append</div>');
     };
+     function prepend() {
+        $$('li').prepend('<div>prepend hello</div>');
+    };
+
 
     // function click(evt) {
     //     console.log('click', evt.target.id);
@@ -147,6 +151,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     next();
     prev();
     append();
+    prepend();
     // addClick();
     // removeClick();    
     // addListener();

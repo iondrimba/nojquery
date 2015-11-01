@@ -345,33 +345,31 @@
         };
 
 
-        // self.prepend = function(el) {
-        //     var total = elmts.length,
-        //         i = 0,
-        //         parent;
+        self.prepend = function(el) {
+            var total = elmts.length,
+                i = 0,
+                innerEmlt = el,
+                parent;
 
-        //     try {
-        //         for (i; i < total; i++) {
-        //             parent = elmts[i].parent;
-        //             parent.insertBefore(el, parent.firstChild);
-        //         }
-        //     } catch (ex) {
-        //         console.warn('prepend::', ex.message);
-        //     }
-        //     return self;
-        // };
+            try {
+                for (i; i < total; i++) {
+                    parent = elmts[i].parentNode;
+                    if (isString(el)) {
+                        innerEmlt = parseHTML(el);
+                    }
+                    parent.insertBefore(innerEmlt, parent.firstChild);
+                }
+            } catch (ex) {
+                console.warn('prepend::', ex.message);
+            }
+            return self;
+        };
 
-        // function HTMLParser(aHTMLString) {
-        //     var html = document.implementation.createDocument("http://www.w3.org/1999/xhtml", "html", null),
-        //         body = document.createElementNS("http://www.w3.org/1999/xhtml", "body");
-        //     html.documentElement.appendChild(body);
-
-        //     body.appendChild(Components.classes["@mozilla.org/feed-unescapehtml;1"]
-        //         .getService(Components.interfaces.nsIScriptableUnescapeHTML)
-        //         .parseFragment(aHTMLString, false, null, body));
-
-        //     return body;
-        // };
+        function parseHTML(html) {
+            var t = document.createElement('template');
+            t.innerHTML = html;
+            return t.content.cloneNode(true);
+        }
 
         function isString(selector) {
             var result = (typeof selector === 'string');
