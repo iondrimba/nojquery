@@ -1,4 +1,17 @@
-﻿define([], function() {
+﻿(function(root, factory) {
+    if (typeof exports === 'object') {
+        // CommonJS
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        // AMD
+        define([], function() {
+            return (root.NoJQuery = factory());
+        });
+    } else {
+        // Global Variables
+        root.NoJQuery = factory(root.b);
+    }
+}(this, function() {
     'use strict';
 
     function parseHTML(html) {
@@ -349,6 +362,5 @@
 
         return this;
     };
-
     return new NoJQuery();
-});
+}));
