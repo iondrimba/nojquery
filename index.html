@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-    .colored-background {
+    .colored {
         background-color: red;
         color: #fff;
     }
@@ -17,38 +17,114 @@
 </head>
 
 <body>
-   <h1>NoJquery Demo</h1>
-    <ul class="lista">
-        <li class="first">AAA
-            <div>div 111 <a href="">link aaa</a></div>
-        </li>
-        <li>BBB
-            <div>div 222</div>
-        </li>
-        <li>CCC
-            <div>div 333</div>
+    <h1>NoJQuery Demo</h1>
+    <h2>find</h2>
+    <ul>
+        <li>li
+            <div>div<a href="">link</a></div>
         </li>
     </ul>
-    <br>
-    <br>
-    <ul class="lista-contains">
-        <li id="first-li">000</li>
-        <li class="second-li">111</li>
-        <li>222</li>
+    <button id="btn-find">find</button> (view console)
+    <hr/>
+    <h2>addClass</h2>
+    <ul class="list">
+        <li>li
+            <div>div<a href="">link</a></div>
+        </li>
     </ul>
-    <br>
-    <button id="btn-one">One</button>
-    <button id="btn-two">Two</button>
-    <button id="btn-three">Three</button>
-    <br>
-    <br>
-    <br>
-    <button id="btn-addlistener">add listener</button>
-    <button id="btn-removelistener">remove listener</button>
-    <button id="btn-addclass">add class</button>
-    <button id="btn-removeclass">remove class</button>
-    <button id="btn-hasclass">has class</button>
-    <button id="btn-contains">contains</button>
+    <button id="btn-addclass">addClass</button>
+    <button id="btn-reset-addclass">reset</button>
+    <hr/>
+    <h2>removeClass</h2>
+    <ul class="list-remove">
+        <li class="colored">li
+            <div>div<a href="">link</a></div>
+        </li>
+    </ul>
+    <button id="btn-removeclass">removeClass</button>
+    <button id="btn-reset-removeclass">reset</button>
+    <hr/>
+    <h2>hasClass</h2>
+    <ul class="list-hasclass">
+        <li class="colored">li
+            <div>div<a href="">link</a></div>
+        </li>
+    </ul>
+    <button id="btn-hasclass">hasClass</button> (view console)
+    <hr/>
+    <h2>contains</h2>
+    <ul class="list-contains">
+        <li class="colored">li
+            <div>div<a href="">link</a></div>
+        </li>
+    </ul>
+    <button id="btn-contains">contains</button> (view console)
+    <hr/>
+    <h2>empty</h2>
+    <ul class="list-empty">
+        <li>li
+            <div>div<a href="">link</a></div>
+        </li>
+    </ul>
+    <button id="btn-empty">empty</button>
+    <button id="btn-reset-empty">reset</button>
+    <hr/>
+    <h2>textContent</h2>
+    <ul class="list-text">
+        <li>li
+            <div>div<a href="">link</a></div>
+        </li>
+    </ul>
+    <button id="btn-text">text</button>
+    <button id="btn-reset-text">reset</button>
+    <hr/>
+    <h2>htmlContent</h2>
+    <ul class="list-html">
+        <li>li
+        </li>
+         <li>li
+        </li>
+         <li>li
+        </li>
+    </ul>
+    <button id="btn-html">html</button>
+    <button id="btn-reset-html">reset</button>
+    <hr/>
+    <h2>getAttr</h2>
+    <ul class="list-getattr">
+        <li>li
+        </li>
+         <li>li
+        </li>
+         <li>li
+        </li>
+    </ul>
+    <button id="btn-getattr">getAttr</button> (view console)
+    <hr/>
+    <h2>setAttr</h2>
+    <ul class="list-setattr">
+        <li>li
+        </li>
+         <li>li
+        </li>
+         <li>li
+        </li>
+    </ul>
+    <button id="btn-setattr">setAttr</button>
+    <button id="btn-reset-setattr">reset</button> (inspect element)
+    <hr/>
+    <h2>removeElmt</h2>
+    <ul class="list-removeelmt">
+        <li>li
+        </li>
+         <li>li
+        </li>
+         <li>li
+        </li>
+    </ul>
+    <button id="btn-removeelmt">removeElmt</button>
+    <button id="btn-reset-removeelmt">reset</button>
+    <hr/>
     <script data-main="demo" src="node_modules/requirejs/require.js"></script>
 </body>
 

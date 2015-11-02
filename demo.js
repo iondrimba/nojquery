@@ -1,60 +1,5 @@
 requirejs(['NoJQuery'], function(NoJQuery) {
     var $$ = NoJQuery;
-console.log('hello');
-    function findElements() {
-        var elmts = $$('li').find('div').find('a');
-        elmts.each(function(elmt, index) {
-            console.log(elmt, index);
-        });
-
-        elmts = $$('li');
-        elmts.each(function(elmt, index) {
-            //console.log(elmt, index);
-        });
-    };
-
-    function addClass() {
-        return $$('li').addClass('colored-background');
-    };
-
-    function hasClass() {
-        var bool = $$('li').hasClass('colored-background');
-        console.log('hasClass', bool);
-    };
-
-    function removeClass() {
-        return $$('li').removeClass('colored-background');
-    };
-
-    function contains() {
-        var result = $$('li').contains('a');
-        console.log(result);
-    };
-
-    function empty() {
-        $$('li').find('a').empty();
-    };
-
-    function textContent() {
-        $$('li').find('a').text('Link A');
-    };
-
-    function htmlContent() {
-        $$('li').each(onEachHtmlContent);
-    };
-
-    function onEachHtmlContent(elmt, index) {
-        $$(elmt).html('<div> DIV -' + index + '</div>');
-    };
-
-    function getAttr() {
-        var result = $$('#btn-addlistener').getAttr('id');
-        console.log(result);
-    };
-
-    function setAttr() {
-        var result = $$('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
-    };
 
     function removeElmts() {
         var result = $$('li').find('div').remove();
@@ -70,7 +15,7 @@ console.log('hello');
     };
 
     function append() {
-        $$('li').append('<div>hello append</div>');        
+        $$('li').append('<div>hello append</div>');
         $$('li').append($$('#btn-one'));
     };
 
@@ -79,33 +24,135 @@ console.log('hello');
         $$('li').find('div:first-child').prepend($$('#btn-two'));
     };
 
-    function onButtonClick(evt) {
-        console.log('click', evt.currentTarget);
+
+    //FIND
+    function onFindClick(evt) {
+        var result = $$('li').find('a');
+        console.log(result.elmts[0]);
+    };
+    $$('#btn-find').on('click', onFindClick);
+
+    //ADD CLASS
+    function onAddClassClick(evt) {
+        $$('.list').find('a').addClass('colored');
     };
 
-    function addListener() {
-        $$('button').on('click', onButtonClick);
+    function onResetAddClassClick(evt) {
+        $$('.list').find('a').removeClass('colored');
+    };
+    $$('#btn-addclass').on('click', onAddClassClick);
+    $$('#btn-reset-addclass').on('click', onResetAddClassClick);
+
+    //REMOVE CLASS
+    function onRemoveClassClick(evt) {
+        $$('.list-remove').find('li').removeClass('colored');
     };
 
-    function removeListener() {
-        $$('button').off('click', onButtonClick);
+    function onResetRemoveClassClick(evt) {
+        $$('.list-remove').find('li:first-child').addClass('colored');
+    };
+    $$('#btn-removeclass').on('click', onRemoveClassClick);
+    $$('#btn-reset-removeclass').on('click', onResetRemoveClassClick);
+
+    //HAS CLASS
+    function onHasClassClick(evt) {
+        var result = $$('.list-hasclass').find('li').hasClass('colored');
+        console.log(result);
+    };
+    $$('#btn-hasclass').on('click', onHasClassClick);
+
+    //CONTAINS
+    function onContainsClick(evt) {
+        var result = $$('.list-contains').contains('.colored');
+        console.log(result);
+    };
+    $$('#btn-contains').on('click', onContainsClick);
+
+    //EMPTY
+    function onEmptyClick(evt) {
+        $$('.list-empty').find('a').empty();
     };
 
-    findElements(); 
-    addClass();
-    hasClass();
-    removeClass();
-    contains();
-    empty();
-    textContent();
-    htmlContent();
-    getAttr();
-    setAttr();
-    removeElmts();
-    next();
-    prev();
-    append();
-    prepend();
-    addListener();
-    removeListener();
+    function onResetEmptyClick(evt) {
+        $$('.list-empty').find('a').text('link');
+    };
+    $$('#btn-empty').on('click', onEmptyClick);
+    $$('#btn-reset-empty').on('click', onResetEmptyClick);
+
+    //EMPTY
+    function onEmptyClick(evt) {
+        $$('.list-empty').find('a').empty();
+    };
+
+    function onResetEmptyClick(evt) {
+        $$('.list-empty').find('a').text('link');
+    };
+    $$('#btn-empty').on('click', onEmptyClick);
+    $$('#btn-reset-empty').on('click', onResetEmptyClick);
+
+    //TEXT
+    function onTextClick(evt) {
+        $$('.list-text').find('a').text('Hello');
+    };
+
+    function onResetTextClick(evt) {
+        $$('.list-text').find('a').text('link');
+    };
+    $$('#btn-text').on('click', onTextClick);
+    $$('#btn-reset-text').on('click', onResetTextClick);
+
+    //HTML
+    function onHtmlClick(evt) {
+        $$('.list-html').find('li').each(function(elmt, index) {
+            $$(elmt).html('<a href="/" class="html-content"> Link - ' + index + '</a>');
+        });
+    };
+
+    function onResetHtmlClick(evt) {
+        $$('.list-html').find('li').each(function(elmt, index) {
+            $$(elmt).find('.html-content').remove();
+            $$(elmt).text('li');
+        });
+    };
+    $$('#btn-html').on('click', onHtmlClick);
+    $$('#btn-reset-html').on('click', onResetHtmlClick);
+
+    //GET ATTR
+    function onGetAttrClick(evt) {
+        var result = $$('.list-getattr').getAttr('class');
+        console.log(result);
+    };
+    $$('#btn-getattr').on('click', onGetAttrClick);
+
+    //SET ATTR
+    function onSetAttrClick(evt) {
+        $$('.list-setattr').setAttr('readonly', 1);
+        console.log($$('.list-setattr').getAttr('readonly'));
+    };
+
+    function onResetSetAttrClick(evt) {
+        var result = $$('.list-setattr').removeAttr('readonly');
+        console.log($$('.list-setattr').getAttr('readonly'));
+    };
+    $$('#btn-setattr').on('click', onSetAttrClick);
+    $$('#btn-reset-setattr').on('click', onResetSetAttrClick);
+
+    //REMOVE ELMT
+    function onRemoveElmtClick(evt) {
+        $$('.list-removeelmt').find('li').remove();
+    };
+
+    function onResetRemoveElmtClick(evt) {
+        $$('.list-removeelmt').html('<li>li</li><li>li</li><li>li</li>');
+    };
+    $$('#btn-removeelmt').on('click', onRemoveElmtClick);
+    $$('#btn-reset-removeelmt').on('click', onResetRemoveElmtClick);
+
+    
+    // next();
+    // prev();
+    // append();
+    // prepend();
+    // addListener();
+    // removeListener();
 });

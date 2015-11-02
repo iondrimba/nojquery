@@ -34,7 +34,7 @@
                 this.elmts.push(selector);
             }
 
-            this.length = this.elmts.length;
+            this.length = this.previousElmt.length;
 
             return this;
         }.bind(this);
@@ -220,6 +220,22 @@
             console.log('remove::', err);
         }
         return removed;
+    };
+
+    NoJQuery.prototype.removeAttr = function(attr) {
+        var total = this.elmts.length,
+            i = 0,
+            elmt = {};
+
+        try {
+            for (i; i < total; i++) {
+                elmt = this.elmts[i];
+                elmt.removeAttribute(attr);
+            }
+        } catch (err) {
+            console.log('removeAttr::', err);
+        }
+        return this;
     };
     NoJQuery.prototype.prev = function(elmt) {
         var total = this.elmts.length,
