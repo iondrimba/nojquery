@@ -1,7 +1,7 @@
 ﻿define([], function() {
     'use strict';
     // var NoJQuery = {
-    //     elmts: [],
+    //     this.elmts: [],
     //     ajax: {
     //         getJson: function ajaxGet(url, onSuccess, onError) {
     //             var request = new XMLHttpRequest(),
@@ -94,300 +94,277 @@
     //         }
     //     },
 
-    //     on: function(eventName, eventHandler) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-    //         for (i; i < total; i++) {
-    //             this.elmts[i].addEventListener(eventName, eventHandler, false);
-    //         }
-
-    //         return this;
-    //     },
-    //     off: function(eventName, eventHandler) {
-    //         var total = this.elmts.length,
-    //             i = 0;
-    //         for (i; i < total; i++) {
-    //             this.elmts[i].removeEventListener(eventName, eventHandler, false);
-    //         }
-
-    //         return this;
-    //     },
-    //     redraw: function(elmt) {
-    //         elmt.offsetHeight;
-    //     },
-
-    //     proxy: function(fn, context) {
-    //         fn.bind(context);
-    //     },
-
-
-    //     cast: function(node) {
-    //         this.elmts = [];
-    //         this.elmts.push(node);
-
-    //         return this;
-    //     }
     // };
 
-    var NoJQuery = function() {
-        var elmts = [],
-            self = NoJQuery,
-            currentSelector = '';
+    function parseHTML(html) {
+        var t = document.createElement('template'),
+            content,
+            nodes;
 
-        self.find = function(selector) {
-            var total = 0,
-                nodes = [],
-                i = 0;
+        t.innerHTML = html;
+        content = t.content || t.firstChild;
+        nodes = content.cloneNode(true);
 
-            elmts = [];
-            currentSelector += ' ' + selector;
-            nodes = document.querySelectorAll(currentSelector);
-            total = nodes.length;
+        return nodes;
+    }
 
-            for (i; i < total; i++) {
-                elmts[i] = nodes[i];
-            }
-            return self;
-        };
-        self.each = function(callback) {
-            Array.prototype.forEach.call(elmts, function(el, i) {
-                callback(el, i);
-            });
-        };
-        self.addClass = function(className) {
-            var total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                if (elmts[i].classList) {
-                    elmts[i].classList.add(className);
-                } else {
-                    elmts[i].className += ' ' + className;
-                }
-            }
-
-            return self;
-        };
-        self.hasClass = function(className) {
-            var result = false,
-                total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                if (elmts[i].classList) {
-                    result = elmts[i].classList.contains(className);
-                } else {
-                    result = new RegExp('(^| )' + className + '( |$)', 'gi').test(elmts[i].className);
-                }
-            }
-
-            return result;
-        };
-        self.removeClass = function(className) {
-            var total = elmts.length,
-                i = 0;
-            for (i; i < total; i++) {
-                if (elmts[i].classList) {
-                    elmts[i].classList.remove(className);
-                } else {
-                    elmts[i].className = elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                }
-            }
-
-            return self;
-        };
-        self.contains = function(selector) {
-            var result = {},
-                total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                result = elmts[i].querySelector(selector);
-                if (result) {
-                    break;
-                }
-            }
-            return result;
-        };
-        self.empty = function() {
-            var total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                elmts[i].innerHTML = '';
-            }
-
-            return self;
-        };
-        self.text = function(string) {
-            var total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                elmts[i].textContent = string;
-            }
-            return self;
-        };
-        self.html = function(string) {
-            var total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                elmts[i].innerHTML = string;
-            }
-            return self;
-        };
-        self.getAttr = function(attr) {
-            var total = 1,
-                i = 0,
-                result = '';
-
-            for (i; i < total; i++) {
-                result = elmts[i].getAttribute(attr);
-            }
-            return result;
-        };
-        self.setAttr = function(attr, val) {
-            var total = elmts.length,
-                i = 0;
-
-            for (i; i < total; i++) {
-                elmts[i].setAttribute(attr, val);
-            }
-            return self;
-        };
-        self.remove = function(elmt) {
-            var total = elmts.length,
-                i = 0,
-                elmt = {},
-                removed = [];
-
-            for (i; i < total; i++) {
-                elmt = elmts[i];
-                elmt.parentNode.removeChild(elmt);
-                removed[i] = elmt;
-            }
-            return removed;
-        };
-        self.prev = function(elmt) {
-            var total = elmts.length,
-                i = 0,
-                nextElemt;
-
-            try {
-                for (i; i < total; i++) {
-                    elmts[i] = elmts[i].previousElementSibling;
-                }
-            } catch (ex) {
-                console.warn('prev::', ex.message);
-            }
-            return self;
-        };
-        self.next = function() {
-            var total = elmts.length,
-                i = 0,
-                nextElemt;
-
-            try {
-                for (i; i < total; i++) {
-                    elmts[i] = elmts[i].nextElementSibling;
-                }
-            } catch (ex) {
-                console.warn('next::', ex.message);
-            }
-            return self;
-        };
-
-        self.append = function(el) {
-            var total = elmts.length,
-                i = 0;
-            try {
-                for (i; i < total; i++) {
-                    if (isString(el)) {
-                        self.html(el);
-                    } else {
-                        elmts[i].appendChild(el);
-                    }
-
-                }
-            } catch (ex) {
-                console.warn('append::', ex.message);
-            }
-            return self;
-
-        };
-
-
-        self.prepend = function(el) {
-            var total = elmts.length,
-                i = 0,
-                innerEmlt = el,
-                parent;
-
-            try {
-                for (i; i < total; i++) {
-                    parent = elmts[i].parentNode || elmts[i].parent;
-                    console.log(elmts[i]);
-                    if (isString(el)) {
-                        innerEmlt = parseHTML(el);
-                    }
-                    parent.insertBefore(innerEmlt, parent.firstChild);
-                }
-            } catch (ex) {
-                console.warn('prepend::', ex.message);
-            }
-            return self;
-        };
-
-        self.on = function(eventName, eventHandler) {
-            var total = elmts.length,
-                i = 0;
-            for (i; i < total; i++) {
-                elmts[i].addEventListener(eventName, eventHandler, false);
-            }
-
-            return self;
-        };
-        self.off = function(eventName, eventHandler) {
-            var total = elmts.length,
-                i = 0;
-            for (i; i < total; i++) {
-                elmts[i].removeEventListener(eventName, eventHandler, false);
-            }
-
-            return self;
-        };
-
-        function parseHTML(html) {
-            var t = document.createElement('template'),
-                content,
-                nodes;
-
-            t.innerHTML = html;
-            content = t.content || t.firstChild;
-            nodes = content.cloneNode(true);
-
-            return nodes;
-        }
-
-        function isString(selector) {
-            var result = (typeof selector === 'string');
-            return result;
-        };
-
-        return function(selector) {
-            if (currentSelector) {
-                currentSelector = '';
-            }
-            if (isString(selector)) {
-                self.find(selector);
-            } else {
-                elmts.push(selector);
-            }
-
-            return self;
-        };
+    function isString(selector) {
+        var result = (typeof selector === 'string');
+        return result;
     };
 
-    return NoJQuery();
+    function NoJQuery() {
+        this.elmts = [];
+        this.length = 0;
+        this.currentSelector = '';
+        this.previousElmt;
+
+        return function(selector) {
+            if (this.currentSelector) {
+                this.currentSelector = '';
+            }
+            if (isString(selector)) {
+                this.find(selector);
+            } else {
+                this.elmts.push(selector);
+            }
+
+            this.length = this.elmts.length;
+
+            return this;
+        }.bind(this);
+    };
+
+    NoJQuery.prototype.find = function(selector) {
+        var total = 0,
+            nodes = [],
+            i = 0;
+
+        this.previousElmt = this.elmts;
+        this.elmts = [];
+        this.currentSelector += ' ' + selector;
+        nodes = document.querySelectorAll(this.currentSelector);
+        total = nodes.length;
+
+        for (i; i < total; i++) {
+            this.elmts[i] = nodes[i];
+        }
+        return this;
+    };
+    NoJQuery.prototype.each = function(callback) {
+        Array.prototype.forEach.call(this.elmts, function(el, i) {
+            callback(el, i);
+        });
+    };
+    NoJQuery.prototype.addClass = function(className) {
+        var total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            if (this.elmts[i].classList) {
+                this.elmts[i].classList.add(className);
+            } else {
+                this.elmts[i].className += ' ' + className;
+            }
+        }
+
+        return this;
+    };
+    NoJQuery.prototype.hasClass = function(className) {
+        var result = false,
+            total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            if (this.elmts[i].classList) {
+                result = this.elmts[i].classList.contains(className);
+            } else {
+                result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
+            }
+        }
+
+        return result;
+    };
+    NoJQuery.prototype.removeClass = function(className) {
+        var total = this.elmts.length,
+            i = 0;
+        for (i; i < total; i++) {
+            if (this.elmts[i].classList) {
+                this.elmts[i].classList.remove(className);
+            } else {
+                this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+            }
+        }
+
+        return this;
+    };
+    NoJQuery.prototype.contains = function(selector) {
+        var result = {},
+            total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            result = this.elmts[i].querySelector(selector);
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    };
+    NoJQuery.prototype.empty = function() {
+        var total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            this.elmts[i].innerHTML = '';
+        }
+
+        return this;
+    };
+    NoJQuery.prototype.text = function(string) {
+        var total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            this.elmts[i].textContent = string;
+        }
+        return this;
+    };
+    NoJQuery.prototype.html = function(string) {
+        var total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            this.elmts[i].innerHTML = string;
+        }
+        return this;
+    };
+    NoJQuery.prototype.getAttr = function(attr) {
+        var total = 1,
+            i = 0,
+            result = '';
+
+        for (i; i < total; i++) {
+            result = this.elmts[i].getAttribute(attr);
+        }
+        return result;
+    };
+    NoJQuery.prototype.setAttr = function(attr, val) {
+        var total = this.elmts.length,
+            i = 0;
+
+        for (i; i < total; i++) {
+            this.elmts[i].setAttribute(attr, val);
+        }
+        return this;
+    };
+    NoJQuery.prototype.remove = function(elmt) {
+        var total = this.elmts.length,
+            i = 0,
+            elmt = {},
+            removed = [];
+
+        for (i; i < total; i++) {
+            elmt = this.elmts[i];
+            elmt.parentNode.removeChild(elmt);
+            removed[i] = elmt;
+        }
+        return removed;
+    };
+    NoJQuery.prototype.prev = function(elmt) {
+        var total = this.elmts.length,
+            i = 0,
+            nextElemt;
+
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i] = this.elmts[i].previousElementSibling;
+            }
+        } catch (err) {
+            console.error('prev::', err);
+        }
+        return this;
+    };
+    NoJQuery.prototype.next = function() {
+        var total = this.elmts.length,
+            i = 0,
+            nextElemt;
+
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i] = this.elmts[i].nextElementSibling;
+            }
+        } catch (err) {
+            console.error('next::', err);
+        }
+        return this;
+    };
+
+    NoJQuery.prototype.append = function(el) {
+        var total = this.previousElmt.length,
+            i = 0,
+            node,
+            textNode = isString(el);
+
+        if (textNode === false) {
+            node = el.elmts[0];
+        }
+
+        try {
+            for (i; i < total; i++) {
+                if (textNode) {
+                    this.html(el);
+                } else {
+                    this.previousElmt[i].appendChild(node);
+                    node = el.elmts[0].cloneNode(true);
+
+                }
+            }
+        } catch (err) {
+            console.error('append::',  err);
+        }
+        return this;
+
+    };
+
+    NoJQuery.prototype.prepend = function(el) {
+        var total = this.elmts.length,
+            i = 0,
+            innerEmlt = el,
+            parent;
+
+        try {
+            for (i; i < total; i++) {
+                parent = this.elmts[i].parentNode || this.elmts[i].parent;
+                if (isString(el)) {
+                    innerEmlt = parseHTML(el);
+                }
+                parent.insertBefore(innerEmlt, parent.firstChild);
+            }
+        } catch (err) {
+            console.error('prepend::', err);
+        }
+        return this;
+    };
+
+    NoJQuery.prototype.on = function(eventName, eventHandler) {
+        var total = this.elmts.length,
+            i = 0;
+        for (i; i < total; i++) {
+            this.elmts[i].addEventListener(eventName, eventHandler, false);
+        }
+
+        return this;
+    };
+    NoJQuery.prototype.off = function(eventName, eventHandler) {
+        var total = this.elmts.length,
+            i = 0;
+        for (i; i < total; i++) {
+            this.elmts[i].removeEventListener(eventName, eventHandler, false);
+        }
+
+        return this;
+    };
+
+    return new NoJQuery();
 });

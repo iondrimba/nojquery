@@ -70,78 +70,26 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     };
 
     function append() {
-        $$('li').append('<div>hello append</div>');
+        $$('li').append('<div>hello append</div>');        
+        $$('li').append($$('#btn-one'));
     };
-     function prepend() {
+
+    function prepend() {
         $$('li').prepend('<div>prepend hello</div>');
+        $$('li').append($$('#btn-two'));
     };
 
     function onButtonClick(evt) {
         console.log('click', evt.currentTarget);
-    };  
+    };
 
     function addListener() {
         $$('button').on('click', onButtonClick);
     };
-    
-    // function click(evt) {
-    //     console.log('click', evt.target.id);
-    // };
 
-    // function clickContains() {
-    //     var result = $$.find('.lista-contains').contains('#first-li');
-    //     console.log(result);
-    //     result = $$.find('.lista-contains').contains('.second-li');
-    //     console.log(result);
-    //     result = $$.find('.lista-contains').contains('.second');
-    //     console.log(result);
-    // };
-
-    // function addListenerClick() {
-    //     console.log('Listener click added');
-    // };
-
-    // function removeListenerClick() {
-    //     console.log('Listener click removed');
-    //     $$.find('#btn-addlistener').off('click', addListenerClick);
-    // };
-
-    // function addClick() {
-    //     $$.find('button').on('click', click);
-    // };
-
-    // function removeClick() {
-    //     $$.find('#btn-contains').on('click', clickContains);
-    // };
-
-    // function addListener() {
-    //     $$.find('#btn-addlistener').on('click', addListenerClick);
-    // };
-
-    // function removeListener() {
-    //     $$.find('#btn-removelistener').on('click', removeListenerClick);
-    // };
-
-    // function onEach(elmt, index) {
-    //     $$.cast(elmt).addClass('colored-background');
-    // };
-
-    // function each() {
-    //     $$.find('button').each(onEach);
-    //     console.log('----');
-    //     $$.find('li').each(onEach);
-    // };
-    // function onEachTextContent(elmt, index) {
-    //     $$.cast(elmt).text('text' + index);
-    // };    
-    // function getAttr() {
-    //     var result = $$.find('#btn-addlistener').getAttr('id');
-    //     console.log(result);
-    // };
-    // function setAttr() {
-    //     var result = $$.find('button').setAttr('state', 'aaaaa').setAttr('readonly', '1');
-    //     console.log(result.elmts);
-    // };
+    function removeListener() {
+        $$('button').off('click', onButtonClick);
+    };
 
 
     findElements();
@@ -158,12 +106,8 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     next();
     prev();
     append();
-    prepend();
-    addListener();
-    // removeClick();    
-    // addListener();
-    // removeListener();
-    // each();        
-
+    //prepend();
+    //addListener();
+    //removeListener();
 
 });
