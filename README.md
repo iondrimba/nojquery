@@ -1,7 +1,7 @@
 # NoJQuery 
 Used for personal projects/simple apps with little DOM interactions.
 
-Minfied version: 6kb
+Minified version: 6kb
 
 ### Future improvements:
 1. Cleaner and more intuitive API [ok]
