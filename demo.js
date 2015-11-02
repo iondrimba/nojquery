@@ -1,4 +1,4 @@
-requirejs(['NoJQuery'], function(NoJQuery) {
+requirejs(['dist/nojquery'], function(NoJQuery) {
     var $$ = NoJQuery;
 
     //FIND

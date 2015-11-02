@@ -10,6 +10,16 @@ module.exports = function(grunt) {
                 }
             }
         },
+        uglify: {
+            options: {
+                mangle: false
+            },
+            prod: {
+                files: {
+                    'dist/nojquery.js': ['nojquery.js']
+                }
+            }
+        },
         watch: {
             options: {
                 spawn: false,
@@ -17,7 +27,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             scripts: {
-                files: ['NoJQuery.js', 'Gruntfile.js', 'demo.js'],
+                files: ['nojquery.js', 'Gruntfile.js', 'demo.js'],
                 tasks: ['eslint']
             },
             html: {
@@ -25,14 +35,15 @@ module.exports = function(grunt) {
             }
         },
         eslint: {
-            target: ['NoJQuery.js', 'Gruntfile.js', 'demo.js']
+            target: ['nojquery.js', 'Gruntfile.js', 'demo.js']
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
-    // Default task(s).
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
     grunt.registerTask('default', ['connect', 'watch']);
 
 };
