@@ -5,9 +5,12 @@ Used for personal projects/simple apps with little DOM interactions
 1. Cleaner and more intuitive API [ok]
 2. Test for each method 
 3. Documentation
+
 ### Implementation :
 It can be loaded with via AMD, CommonJs and as global namespace.
+
 #### API
+
 ##### find :
 #
 ```js
