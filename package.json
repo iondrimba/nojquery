@@ -11,12 +11,11 @@
     "url": "git+https://github.com/iondrimba/NoJQuery.git"
   },
   "keywords": [
-    "No",
+    "NoJQuery",
     "jQuery",
-    "DOM",
-    "method"
+    "DOM"
   ],
-  "author": "Ion D. Filho",
+  "author": "Ion Drimba Filho <iondrimba@gmail.com> (http://iondrimbafilho.me)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/iondrimba/NoJQuery/issues"
