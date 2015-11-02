@@ -1,30 +1,6 @@
 requirejs(['NoJQuery'], function(NoJQuery) {
     var $$ = NoJQuery;
 
-    function removeElmts() {
-        var result = $$('li').find('div').remove();
-        console.log(result);
-    };
-
-    function next() {
-        var result = $$('#btn-addlistener').next().remove();
-    };
-
-    function prev() {
-        $$('#btn-removeclass').prev().remove();
-    };
-
-    function append() {
-        $$('li').append('<div>hello append</div>');
-        $$('li').append($$('#btn-one'));
-    };
-
-    function prepend() {
-        $$('li').find('div').prepend('<div>prepend hello</div>');
-        $$('li').find('div:first-child').prepend($$('#btn-two'));
-    };
-
-
     //FIND
     function onFindClick(evt) {
         var result = $$('li').find('a');
@@ -168,6 +144,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     function onAppendClick(evt) {
         $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
     };
+
     function onResetAppendClick(evt) {
         $$('.list-append').find('li').find('div').remove();
         $$('.list-append').find('li').append('<span>li</span>');
@@ -180,13 +157,26 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     function onPrependClick(evt) {
         $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
     };
-    function onResetPrependClick(evt) {        
+
+    function onResetPrependClick(evt) {
         $$('.list-prepend').find('li').find('div').remove();
     };
 
     $$('#btn-prepend').on('click', onPrependClick);
     $$('#btn-reset-prepend').on('click', onResetPrependClick);
 
-    // addListener();
-    // removeListener();
+    //ADD /REMOVE LISTNER
+    function onButtonClick(evt) {
+        console.log('click', evt.currentTarget);
+    };
+
+    function onAddListenerClick(evt) {
+        $$('.list-addlistener').find('button').on('click', onButtonClick);
+    };
+
+    function onRemoveListenerClick(evt) {
+        $$('.list-addlistener').find('button').off('click', onButtonClick);
+    };
+    $$('#btn-addlistener').on('click', onAddListenerClick);
+    $$('#btn-removelistener').on('click', onRemoveListenerClick);
 });
