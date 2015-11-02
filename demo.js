@@ -55,17 +55,6 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
     $$('#btn-empty').on('click', onEmptyClick);
     $$('#btn-reset-empty').on('click', onResetEmptyClick);
 
-    //EMPTY
-    function onEmptyClick(evt) {
-        $$('.list-empty').find('a').empty();
-    };
-
-    function onResetEmptyClick(evt) {
-        $$('.list-empty').find('a').text('link');
-    };
-    $$('#btn-empty').on('click', onEmptyClick);
-    $$('#btn-reset-empty').on('click', onResetEmptyClick);
-
     //TEXT
     function onTextClick(evt) {
         $$('.list-text').find('a').text('Hello');
