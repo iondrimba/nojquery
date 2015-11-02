@@ -1,6 +1,6 @@
 requirejs(['NoJQuery'], function(NoJQuery) {
     var $$ = NoJQuery;
-
+console.log('hello');
     function findElements() {
         var elmts = $$('li').find('div').find('a');
         elmts.each(function(elmt, index) {
@@ -91,8 +91,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
         $$('button').off('click', onButtonClick);
     };
 
-
-    findElements();
+    findElements(); 
     addClass();
     hasClass();
     removeClass();
@@ -107,7 +106,6 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     prev();
     append();
     prepend();
-    //addListener();
-    //removeListener();
-
+    addListener();
+    removeListener();
 });

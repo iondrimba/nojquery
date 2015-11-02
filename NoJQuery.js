@@ -1,100 +1,5 @@
 ﻿define([], function() {
     'use strict';
-    // var NoJQuery = {
-    //     this.elmts: [],
-    //     ajax: {
-    //         getJson: function ajaxGet(url, onSuccess, onError) {
-    //             var request = new XMLHttpRequest(),
-    //                 dataSuccess,
-    //                 dataError;
-
-    //             request.open('GET', url, true);
-
-    //             request.onload = function onload(evt) {
-    //                 var options = {};
-    //                 options.evt = evt;
-    //                 options.request = request;
-    //                 options.onSuccess = onSuccess;
-    //                 options.onError = onError;
-    //                 options.dataSuccess = dataSuccess;
-    //                 options.dataError = dataError;
-
-    //                 NoJQuery.ajax.jsonRequestOnLoad(options);
-    //             };
-    //             request.onerror = function onerror() {
-    //                 onError();
-    //             };
-    //             request.send();
-    //         },
-    //         postJson: function ajaxPost(url, data, onSuccess, onError) {
-    //             var request = new XMLHttpRequest(),
-    //                 dataSuccess,
-    //                 dataError;
-
-    //             request.open('POST', url, true);
-    //             request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    //             request.onload = function onload(evt) {
-    //                 var options = {};
-    //                 options.evt = evt;
-    //                 options.request = request;
-    //                 options.onSuccess = onSuccess;
-    //                 options.onError = onError;
-    //                 options.dataSuccess = dataSuccess;
-    //                 options.dataError = dataError;
-
-    //                 NoJQuery.ajax.jsonRequestOnLoad(options);
-    //             };
-    //             request.onerror = function onerror() {
-    //                 onError();
-    //             };
-    //             request.send(data);
-    //         },
-    //         get: function ajaxGet(url, onSuccess, onError) {
-    //             var request = new XMLHttpRequest(),
-    //                 dataSuccess,
-    //                 dataError;
-
-    //             request.open('GET', url, true);
-
-    //             request.onload = function onload(evt) {
-    //                 var options = {};
-    //                 options.evt = evt;
-    //                 options.request = request;
-    //                 options.onSuccess = onSuccess;
-    //                 options.onError = onError;
-    //                 options.dataSuccess = dataSuccess;
-    //                 options.dataError = dataError;
-
-    //                 NoJQuery.ajax.requestOnLoad(options);
-    //             };
-    //             request.onerror = function onerror() {
-    //                 onError();
-    //             };
-    //             request.send();
-    //         },
-    //         onLoad: function(options, returnData) {
-    //             if (options.request.status >= 200 && options.request.status < 400) {
-    //                 options.dataSuccess = returnData;
-    //                 options.onSuccess(options.dataSuccess);
-    //             } else {
-    //                 options.dataError = {
-    //                     message: options.evt.currentTarget.responseURL + ' - ' + options.evt.currentTarget.statusText,
-    //                     statusText: options.evt.currentTarget.statusText,
-    //                     responseURL: options.evt.currentTarget.responseURL,
-    //                     status: options.evt.currentTarget.status
-    //                 };
-    //                 options.onError();
-    //             }
-    //         },
-    //         jsonRequestOnLoad: function(options) {
-    //             NoJQuery.ajax.onLoad(options, JSON.parse(options.request.responseText));
-    //         },
-    //         requestOnLoad: function(options) {
-    //             NoJQuery.ajax.onLoad(options, options.request.responseText);
-    //         }
-    //     },
-
-    // };
 
     function parseHTML(html) {
         var t = document.createElement('template'),
@@ -140,15 +45,20 @@
             nodes = [],
             i = 0;
 
-        this.previousElmt = this.elmts;
-        this.elmts = [];
-        this.currentSelector += ' ' + selector;
-        nodes = document.querySelectorAll(this.currentSelector);
-        total = nodes.length;
+        try {
+            this.previousElmt = this.elmts;
+            this.elmts = [];
+            this.currentSelector += ' ' + selector;
+            nodes = document.querySelectorAll(this.currentSelector);
+            total = nodes.length;
 
-        for (i; i < total; i++) {
-            this.elmts[i] = nodes[i];
+            for (i; i < total; i++) {
+                this.elmts[i] = nodes[i];
+            }
+        } catch (err) {
+            console.error('find::', err);
         }
+
         return this;
     };
     NoJQuery.prototype.each = function(callback) {
@@ -160,12 +70,16 @@
         var total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            if (this.elmts[i].classList) {
-                this.elmts[i].classList.add(className);
-            } else {
-                this.elmts[i].className += ' ' + className;
+        try {
+            for (i; i < total; i++) {
+                if (this.elmts[i].classList) {
+                    this.elmts[i].classList.add(className);
+                } else {
+                    this.elmts[i].className += ' ' + className;
+                }
             }
+        } catch (err) {
+            console.error('addClass::', err);
         }
 
         return this;
@@ -175,12 +89,16 @@
             total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            if (this.elmts[i].classList) {
-                result = this.elmts[i].classList.contains(className);
-            } else {
-                result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
+        try {
+            for (i; i < total; i++) {
+                if (this.elmts[i].classList) {
+                    result = this.elmts[i].classList.contains(className);
+                } else {
+                    result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
+                }
             }
+        } catch (err) {
+            console.error('hasClass::', err);
         }
 
         return result;
@@ -188,14 +106,18 @@
     NoJQuery.prototype.removeClass = function(className) {
         var total = this.elmts.length,
             i = 0;
-        for (i; i < total; i++) {
-            if (this.elmts[i].classList) {
-                this.elmts[i].classList.remove(className);
-            } else {
-                this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+        try {
+            for (i; i < total; i++) {
+                if (this.elmts[i].classList) {
+                    this.elmts[i].classList.remove(className);
+                } else {
+                    this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
             }
-        }
 
+        } catch (err) {
+            console.error('removeClass::', err);
+        }
         return this;
     };
     NoJQuery.prototype.contains = function(selector) {
@@ -203,11 +125,15 @@
             total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            result = this.elmts[i].querySelector(selector);
-            if (result) {
-                break;
+        try {
+            for (i; i < total; i++) {
+                result = this.elmts[i].querySelector(selector);
+                if (result) {
+                    break;
+                }
             }
+        } catch (err) {
+            console.error('contains::', err);
         }
         return result;
     };
@@ -215,8 +141,12 @@
         var total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            this.elmts[i].innerHTML = '';
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i].innerHTML = '';
+            }
+        } catch (err) {
+            console.error('empty::', err);
         }
 
         return this;
@@ -225,8 +155,12 @@
         var total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            this.elmts[i].textContent = string;
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i].textContent = string;
+            }
+        } catch (err) {
+            console.error('text::', err);
         }
         return this;
     };
@@ -234,8 +168,12 @@
         var total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            this.elmts[i].innerHTML = string;
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i].innerHTML = string;
+            }
+        } catch (err) {
+            console.log('html::', err);
         }
         return this;
     };
@@ -244,8 +182,12 @@
             i = 0,
             result = '';
 
-        for (i; i < total; i++) {
-            result = this.elmts[i].getAttribute(attr);
+        try {
+            for (i; i < total; i++) {
+                result = this.elmts[i].getAttribute(attr);
+            }
+        } catch (err) {
+            console.log('getAttr::', err);
         }
         return result;
     };
@@ -253,8 +195,12 @@
         var total = this.elmts.length,
             i = 0;
 
-        for (i; i < total; i++) {
-            this.elmts[i].setAttribute(attr, val);
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i].setAttribute(attr, val);
+            }
+        } catch (err) {
+            console.log('setAttr', err);
         }
         return this;
     };
@@ -264,10 +210,14 @@
             elmt = {},
             removed = [];
 
-        for (i; i < total; i++) {
-            elmt = this.elmts[i];
-            elmt.parentNode.removeChild(elmt);
-            removed[i] = elmt;
+        try {
+            for (i; i < total; i++) {
+                elmt = this.elmts[i];
+                elmt.parentNode.removeChild(elmt);
+                removed[i] = elmt;
+            }
+        } catch (err) {
+            console.log('remove::', err);
         }
         return removed;
     };
@@ -360,8 +310,12 @@
     NoJQuery.prototype.on = function(eventName, eventHandler) {
         var total = this.elmts.length,
             i = 0;
-        for (i; i < total; i++) {
-            this.elmts[i].addEventListener(eventName, eventHandler, false);
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i].addEventListener(eventName, eventHandler, false);
+            }
+        } catch (err) {
+            console.log('on::', err);
         }
 
         return this;
@@ -369,8 +323,12 @@
     NoJQuery.prototype.off = function(eventName, eventHandler) {
         var total = this.elmts.length,
             i = 0;
-        for (i; i < total; i++) {
-            this.elmts[i].removeEventListener(eventName, eventHandler, false);
+        try {
+            for (i; i < total; i++) {
+                this.elmts[i].removeEventListener(eventName, eventHandler, false);
+            }
+        } catch (err) {
+            console.log('off::', err);
         }
 
         return this;
