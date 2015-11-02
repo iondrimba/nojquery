@@ -321,25 +321,35 @@
                 }
             }
         } catch (err) {
-            console.error('append::',  err);
+            console.error('append::', err);
         }
         return this;
 
     };
 
     NoJQuery.prototype.prepend = function(el) {
-        var total = this.elmts.length,
+        var total = this.previousElmt.length,
             i = 0,
-            innerEmlt = el,
+            node,
+            textNode = isString(el),
             parent;
+
+        if (textNode === false) {
+            node = el.elmts[0];
+        }
 
         try {
             for (i; i < total; i++) {
-                parent = this.elmts[i].parentNode || this.elmts[i].parent;
-                if (isString(el)) {
-                    innerEmlt = parseHTML(el);
+                if (textNode) {
+                    parent = this.elmts[i].parentNode || this.elmts[i].parent;
+                    node = parseHTML(el);
+                    parent.insertBefore(node, parent.firstChild);
+                } else {
+                    parent = this.previousElmt[i].parentNode || this.previousElmt[i].parent;
+                    parent.insertBefore(node, parent.firstChild);
+                    node = el.elmts[0].cloneNode(true);
                 }
-                parent.insertBefore(innerEmlt, parent.firstChild);
+
             }
         } catch (err) {
             console.error('prepend::', err);

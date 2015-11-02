@@ -75,8 +75,8 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     };
 
     function prepend() {
-        $$('li').prepend('<div>prepend hello</div>');
-        $$('li').append($$('#btn-two'));
+        $$('li').find('div').prepend('<div>prepend hello</div>');
+        $$('li').find('div:first-child').prepend($$('#btn-two'));
     };
 
     function onButtonClick(evt) {
@@ -106,7 +106,7 @@ requirejs(['NoJQuery'], function(NoJQuery) {
     next();
     prev();
     append();
-    //prepend();
+    prepend();
     //addListener();
     //removeListener();
 
