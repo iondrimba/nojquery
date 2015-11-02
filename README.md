@@ -11,17 +11,17 @@ Minified version: 6kb
 ### Implementation :
 It can be loaded with via AMD, CommonJs and as global namespace.
 
-# AMD
+#### AMD
 ```js
 define(['nojquery'], function(NoJQuery){
     var $$ = NoJQuery;
 });
 ```
-# CommonJS
+#### CommonJS
 ```js
 var $$ = require('nojquery');
 ```
-# Global namespace
+#### Global namespace
 ```js
 var $$ = window.NoJQuery;
 ```
