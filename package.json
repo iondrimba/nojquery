@@ -21,13 +21,12 @@
         "url": "https://github.com/iondrimba/NoJQuery/issues"
     },
     "scripts": {
-        "test": "./node_modules/.bin/grunt test"
+        "test": "grunt test"
     },
     "homepage": "https://github.com/iondrimba/NoJQuery#readme",
     "dependencies": {
         "grunt": "^0.4.5",
         "grunt-cli": "^0.1.13",
-        "jasmine-jquery": "^2.1.1",
         "livereload-js": "^2.2.2",
         "requirejs": "^2.1.20"
     },
