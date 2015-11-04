@@ -40,13 +40,15 @@ module.exports = function(grunt) {
         jasmine: {
             src: 'nojquery.js',
             options: {
-                specs: 'specs/**.js'
+                specs: 'spec/*.js',
+                vendor: 'spec/vendors/jquery.js',
+                helpers: 'spec/vendors/jasmine-jquery.js'
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-jasmine-runner');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
