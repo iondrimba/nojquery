@@ -53,6 +53,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('test', ['jasmine']);
+    grunt.registerTask('build', ['connect', 'watch']);
 
 };
