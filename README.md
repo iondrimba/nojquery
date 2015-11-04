@@ -9,7 +9,7 @@ Minified version: 6kb
 3. Documentation
 
 ### Implementation :
-It can be loaded with via AMD, CommonJs and as global namespace.
+UMD ready. It can be loaded via AMD, CommonJs and as global namespace.
 
 #### AMD
 ```js

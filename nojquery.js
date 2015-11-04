@@ -9,7 +9,7 @@
         });
     } else {
         // Global Variables
-        root.NoJQuery = factory(root.b);
+        root.NoJQuery = factory();
     }
 }(this, function() {
     'use strict';
