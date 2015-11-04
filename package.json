@@ -34,6 +34,7 @@
     "grunt-contrib-uglify": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.3.1",
+    "grunt-jasmine-runner": "^0.6.0",
     "load-grunt-tasks": "^3.3.0"
   }
 }

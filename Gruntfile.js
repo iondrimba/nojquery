@@ -36,10 +36,17 @@ module.exports = function(grunt) {
         },
         eslint: {
             target: ['nojquery.js', 'Gruntfile.js', 'demo.js']
+        },
+        jasmine: {
+            src: 'nojquery.js',
+            options: {
+                specs: 'specs/**.js'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-jasmine-runner');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
