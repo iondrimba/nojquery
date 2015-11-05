@@ -45,3 +45,17 @@ describe('.removeClass() Test', function() {
         expect(result).toEqual(false);
     });
 });
+
+describe('.hasClass() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-hasclass li should have a class colored', function() {
+        var $$ = NoJQuery;
+        var result = $$('.list-hasclass').find('li').hasClass('colored');
+        expect(result).toEqual(true);
+    });
+});
+
