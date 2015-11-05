@@ -39,8 +39,8 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
 
     //CONTAINS
     function onContainsClick(evt) {
-        var result = $$('.list-contains').contains('.colored');
-        console.log(result);
+        var result = $$('.list-contains').contains('.colored');        
+        console.log($$(result).find('.colored'));
     };
     $$('#btn-contains').on('click', onContainsClick);
 

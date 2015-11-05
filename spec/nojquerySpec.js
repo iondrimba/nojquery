@@ -1,5 +1,5 @@
 function setUpHTMLFixture() {
-    loadFixtures('index.html');
+    loadFixtures('../../../index.html');
 };
 
 describe('.find() Test', function() {
@@ -58,4 +58,19 @@ describe('.hasClass() Test', function() {
         expect(result).toEqual(true);
     });
 });
+
+describe('.contains() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-contains should contain an elemt with a class colored', function() {
+        var $$ = NoJQuery;
+        var result = $$('.list-contains').contains('.colored'),
+        	contained = $$(result).find('.colored');
+        expect(contained.length).toEqual(1);
+    });
+});
+
 

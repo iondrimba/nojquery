@@ -6,7 +6,15 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 9000,
-                    hostname: '*'
+                    hostname: '*',
+                    open:true,
+                    base: {
+                        path: '.',
+                        options: {
+                            index: 'index.html',
+                            maxAge: 300000
+                        }
+                    }
                 }
             }
         },
