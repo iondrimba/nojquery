@@ -131,4 +131,18 @@ describe('.getAttr() Test', function() {
     });
 });
 
+describe('.setAttr() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-setattr should a attribute readonly with value of 1', function() {
+        var $$ = NoJQuery;
+        $$('.list-setattr').setAttr('readonly', 1);
+        var result = $$('.list-setattr').getAttr('readonly');
+        expect(result).toEqual('1');
+    });
+});
+
 
