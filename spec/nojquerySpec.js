@@ -86,3 +86,17 @@ describe('.empty() Test', function() {
         expect(result).toEqual('');
     });
 });
+
+describe('.text() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-text a should text value of Hello', function() {
+        var $$ = NoJQuery;
+        $$('.list-text').find('a').text('Hello');
+        var result = $$('.list-text').find('a').text();
+        expect(result).toEqual('Hello');
+    });
+});
