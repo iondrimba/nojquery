@@ -118,8 +118,9 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //NEXT
     function onNextClick(evt) {
-        var result = $$('.list-next').find('.btn-one').next();
-        console.log(result.elmts[0]);
+        var result = $$('.list-next').find('.btn-one').next(),
+            nextElmt = $$(result.elmts[0]);
+        console.log(nextElmt.elmts[0], $$('.list-next').find('.btn-two').elmts[0]);
     };
 
     $$('#btn-next').on('click', onNextClick);

@@ -172,3 +172,17 @@ describe('.remove() Test', function() {
         expect(result).toEqual(0);
     });
 });
+
+describe('.next() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-next - next element should be ', function() {
+        var $$ = NoJQuery;        
+        var result = $$('.list-next').find('.btn-one').next(),
+            nextElmt = $$(result.elmts[0]);
+        expect(nextElmt.elmts[0]).toEqual($$('.list-next').find('.btn-two').elmts[0]);
+    });
+});
