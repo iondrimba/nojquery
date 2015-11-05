@@ -148,7 +148,6 @@
                 result = this.elmts[i].querySelector(selector);
                 if (result) {
                     this.length = 1;
-                    console.log(this);
                     break;
                 }
             }
