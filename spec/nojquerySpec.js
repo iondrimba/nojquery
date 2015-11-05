@@ -22,7 +22,7 @@ describe('.addClass() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list should have a class colored', function() {
+    it('.list - should have a class colored', function() {
         var $$ = NoJQuery;
 
         $$('.list').addClass('colored');
@@ -37,7 +37,7 @@ describe('.removeClass() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('li should not have a class colored', function() {
+    it('li - should not have a class colored', function() {
         var $$ = NoJQuery;
 
         $$('.list-remove').find('li').removeClass('colored');
@@ -52,7 +52,7 @@ describe('.hasClass() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-hasclass li should have a class colored', function() {
+    it('.list-hasclass li  - should have a class colored', function() {
         var $$ = NoJQuery;
         var result = $$('.list-hasclass').find('li').hasClass('colored');
         expect(result).toEqual(true);
@@ -65,7 +65,7 @@ describe('.contains() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-contains should contain an elemt with a class colored', function() {
+    it('.list-contains - should contain an elemt with a class colored', function() {
         var $$ = NoJQuery;
         var result = $$('.list-contains').contains('.colored'),
             contained = $$(result).find('.colored');
@@ -79,7 +79,7 @@ describe('.empty() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-empty a should empty value', function() {
+    it('.list-empty a - should have an empty value', function() {
         var $$ = NoJQuery;
         $$('.list-empty').find('a').empty();
         var result = $$('.list-empty').find('a').text();
@@ -93,7 +93,7 @@ describe('.text() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-text a should text value of Hello', function() {
+    it('.list-text  a - should have a text value of Hello', function() {
         var $$ = NoJQuery;
         $$('.list-text').find('a').text('Hello');
         var result = $$('.list-text').find('a').text();
@@ -107,7 +107,7 @@ describe('.html() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-html should have 3 links', function() {
+    it('.list-html - should have 3 links', function() {
         var $$ = NoJQuery;
         $$('.list-html').find('li').each(function(elmt, index) {
             $$(elmt).html('<a href="/" class="html-content"> Link - ' + index + '</a>');
@@ -123,7 +123,7 @@ describe('.getAttr() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-getattr should a attribute iduser with value of 89', function() {
+    it('.list-getattr - should have an attribute iduser with value of 89', function() {
         var $$ = NoJQuery;
         $$('.list-getattr').setAttr('iduser', 89);
         var result = $$('.list-getattr').getAttr('iduser');
@@ -137,7 +137,7 @@ describe('.setAttr() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-setattr should a attribute readonly with value of 1', function() {
+    it('.list-setattr - should have an attribute readonly with value of 1', function() {
         var $$ = NoJQuery;
         $$('.list-setattr').setAttr('readonly', 1);
         var result = $$('.list-setattr').getAttr('readonly');
