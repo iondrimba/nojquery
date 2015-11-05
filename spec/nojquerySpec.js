@@ -67,9 +67,8 @@ describe('.contains() Test', function() {
 
     it('.list-contains - should contain an elemt with a class colored', function() {
         var $$ = NoJQuery;
-        var result = $$('.list-contains').contains('.colored'),
-            contained = $$(result).find('.colored');
-        expect(contained.length).toEqual(1);
+        var result = $$('.list-contains').contains('.colored');
+        expect(result).not.toBeNull();
     });
 });
 
@@ -145,4 +144,16 @@ describe('.setAttr() Test', function() {
     });
 });
 
+describe('.remove() Test', function() {
 
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-removeelmt - should not have any li element', function() {
+        var $$ = NoJQuery;
+        $$('.list-removeelmt').find('li').remove();
+        var result = $$('.list-removeelmt').find('li').elmts.length;
+        expect(result).toEqual(0);
+    });
+});

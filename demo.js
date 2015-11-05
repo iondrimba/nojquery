@@ -1,4 +1,4 @@
-requirejs(['dist/nojquery'], function(NoJQuery) {
+requirejs(['nojquery'], function(NoJQuery) {
     var $$ = NoJQuery;
 
     //FIND
@@ -39,8 +39,8 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
 
     //CONTAINS
     function onContainsClick(evt) {
-        var result = $$('.list-contains').contains('.colored');        
-        console.log($$(result).find('.colored'));
+        var result = $$('.list-contains').contains('.colored1');        
+        console.log(result);
     };
     $$('#btn-contains').on('click', onContainsClick);
 
@@ -107,6 +107,7 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
     //REMOVE ELMT
     function onRemoveElmtClick(evt) {
         $$('.list-removeelmt').find('li').remove();
+        console.log($$('.list-removeelmt').find('li').elmts.length);
     };
 
     function onResetRemoveElmtClick(evt) {
