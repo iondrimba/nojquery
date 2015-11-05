@@ -200,3 +200,18 @@ describe('.prev() Test', function() {
         expect(prevElmt.elmts[0]).toEqual($$('.list-prev').find('.btn-one').elmts[0]);
     });
 });
+
+describe('.append() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-append - should have 3 divs as children', function() {
+        var $$ = NoJQuery;        
+        $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        var result = $$('.list-append').find('li').find('div');
+        expect(result.elmts.length).toEqual(3);
+    });
+});
+
