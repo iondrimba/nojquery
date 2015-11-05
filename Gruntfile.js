@@ -44,16 +44,32 @@ module.exports = function(grunt) {
                 vendor: 'spec/vendors/jquery.js',
                 helpers: 'spec/vendors/jasmine-jquery.js'
             }
-        }
+        },
+        coveralls: {
+            // Options relevant to all targets
+            options: {
+                // When true, grunt-coveralls will only print a warning rather than
+                // an error, to prevent CI builds from failing unnecessarily (e.g. if
+                // coveralls.io is down). Optional, defaults to false.
+                force: false
+            },
+
+            dev: {
+                // LCOV coverage file (can be string, glob or array)
+                src: 'spec/javascripts/fixtures/*.info'
+            }
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-istanbul');
+    grunt.loadNpmTasks('grunt-coveralls');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('test', ['jasmine']);
+    grunt.registerTask('test', ['jasmine', 'coveralls']);
     grunt.registerTask('default', ['connect', 'watch']);
 
 };
