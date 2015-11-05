@@ -21,7 +21,7 @@
         "url": "https://github.com/iondrimba/NoJQuery/issues"
     },
     "scripts": {
-        "test": "grunt test"
+        "test": "./node_modules/grunt-cli/bin/grunt test"
     },
     "homepage": "https://github.com/iondrimba/NoJQuery#readme",
     "dependencies": {
