@@ -31,4 +31,17 @@ describe('.addClass() Test', function() {
     });
 });
 
-//$$('.list-remove').find('li').removeClass('colored');
+describe('.removeClass() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('li should not have a class colored', function() {
+        var $$ = NoJQuery;
+
+        $$('.list-remove').find('li').removeClass('colored');
+        var result = $('.list-remove').find('li').hasClass('colored');
+        expect(result).toEqual(false);
+    });
+});
