@@ -151,6 +151,8 @@ requirejs(['nojquery'], function(NoJQuery) {
     //PREPEND
     function onPrependClick(evt) {
         $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        var result = $$('.list-prepend').find('span').prev();
+        console.log(result);
     };
 
     function onResetPrependClick(evt) {

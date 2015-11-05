@@ -180,7 +180,7 @@ describe('.next() Test', function() {
     });
 
     it('.list-next - next element should be .btn-two', function() {
-        var $$ = NoJQuery;        
+        var $$ = NoJQuery;
         var result = $$('.list-next').find('.btn-one').next(),
             nextElmt = $$(result.elmts[0]);
         expect(nextElmt.elmts[0]).toEqual($$('.list-next').find('.btn-two').elmts[0]);
@@ -194,7 +194,7 @@ describe('.prev() Test', function() {
     });
 
     it('.list-prev - prev element should be btn-one', function() {
-        var $$ = NoJQuery;        
+        var $$ = NoJQuery;
         var result = $$('.list-prev').find('.btn-two').prev(),
             prevElmt = $$(result.elmts[0]);
         expect(prevElmt.elmts[0]).toEqual($$('.list-prev').find('.btn-one').elmts[0]);
@@ -208,10 +208,24 @@ describe('.append() Test', function() {
     });
 
     it('.list-append - should have 3 divs as children', function() {
-        var $$ = NoJQuery;        
+        var $$ = NoJQuery;
         $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-append').find('li').find('div');
         expect(result.elmts.length).toEqual(3);
     });
 });
 
+describe('.prepend() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-prepend - should have a div before a span', function() {
+        var $$ = NoJQuery;
+        $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        var result = $$('.list-prepend').find('span').prev(),
+            div = $$('.list-prepend').find('div');
+        expect(result.elmts[0]).toEqual(div.elmts[0]);
+    });
+});
