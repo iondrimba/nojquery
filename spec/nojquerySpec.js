@@ -15,3 +15,20 @@ describe('.find() Test', function() {
         expect(result.elmts.length).toEqual(1);
     });
 });
+
+describe('.addClass() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list should have a class colored', function() {
+        var $$ = NoJQuery;
+
+        $$('.list').addClass('colored');
+        var result = $$('.list').hasClass('colored');
+        expect(result).toEqual(true);
+    });
+});
+
+//$$('.list-remove').find('li').removeClass('colored');
