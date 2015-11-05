@@ -1,4 +1,4 @@
-requirejs(['dist/nojquery'], function(NoJQuery) {
+requirejs(['nojquery'], function(NoJQuery) {
     var $$ = NoJQuery;
 
     //FIND
@@ -39,7 +39,7 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
 
     //CONTAINS
     function onContainsClick(evt) {
-        var result = $$('.list-contains').contains('.colored');
+        var result = $$('.list-contains').contains('.colored1');        
         console.log(result);
     };
     $$('#btn-contains').on('click', onContainsClick);
@@ -71,6 +71,8 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
         $$('.list-html').find('li').each(function(elmt, index) {
             $$(elmt).html('<a href="/" class="html-content"> Link - ' + index + '</a>');
         });
+
+        console.log($$('.list-html').find('a'));
     };
 
     function onResetHtmlClick(evt) {
@@ -105,6 +107,7 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
     //REMOVE ELMT
     function onRemoveElmtClick(evt) {
         $$('.list-removeelmt').find('li').remove();
+        console.log($$('.list-removeelmt').find('li').elmts.length);
     };
 
     function onResetRemoveElmtClick(evt) {
@@ -115,8 +118,9 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
 
     //NEXT
     function onNextClick(evt) {
-        var result = $$('.list-next').find('.btn-one').next();
-        console.log(result.elmts[0]);
+        var result = $$('.list-next').find('.btn-one').next(),
+            nextElmt = $$(result.elmts[0]);
+        console.log(nextElmt.elmts[0], $$('.list-next').find('.btn-two').elmts[0]);
     };
 
     $$('#btn-next').on('click', onNextClick);
@@ -132,6 +136,8 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
     //APPEND
     function onAppendClick(evt) {
         $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        var result = $$('.list-append').find('li').find('div');
+        console.log(result);
     };
 
     function onResetAppendClick(evt) {
@@ -145,6 +151,8 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
     //PREPEND
     function onPrependClick(evt) {
         $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        var result = $$('.list-prepend').find('span').prev();
+        console.log(result);
     };
 
     function onResetPrependClick(evt) {

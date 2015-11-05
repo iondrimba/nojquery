@@ -46,7 +46,6 @@
             } else {
                 this.elmts.push(selector);
             }
-
             this.length = this.previousElmt.length;
 
             return this;
@@ -59,11 +58,17 @@
             i = 0;
 
         try {
-            this.previousElmt = this.elmts;
+
             this.elmts = [];
             this.currentSelector += ' ' + selector;
             nodes = document.querySelectorAll(this.currentSelector);
             total = nodes.length;
+
+            if (total) {
+                this.previousElmt = this.elmts;
+            } else {
+                this.previousElmt = [];
+            }
 
             for (i; i < total; i++) {
                 this.elmts[i] = nodes[i];
@@ -142,6 +147,7 @@
             for (i; i < total; i++) {
                 result = this.elmts[i].querySelector(selector);
                 if (result) {
+                    this.length = 1;
                     break;
                 }
             }
@@ -166,15 +172,26 @@
     };
     NoJQuery.prototype.text = function(string) {
         var total = this.elmts.length,
-            i = 0;
+            i = 0,
+            result = '';
 
         try {
             for (i; i < total; i++) {
-                this.elmts[i].textContent = string;
+                if (string && (string.length > 0)) {
+                    this.elmts[i].textContent = string;
+                } else {
+                    result += this.elmts[i].textContent;
+                }
+
             }
         } catch (err) {
             console.error('text::', err);
         }
+
+        if (!string) {
+            return result;
+        }
+
         return this;
     };
     NoJQuery.prototype.html = function(string) {
@@ -232,6 +249,10 @@
         } catch (err) {
             console.log('remove::', err);
         }
+
+        this.previousElmt = [];
+        this.length = 0;
+
         return removed;
     };
 

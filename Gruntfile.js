@@ -6,7 +6,15 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 9000,
-                    hostname: '*'
+                    hostname: '*',
+                    open:true,
+                    base: {
+                        path: '.',
+                        options: {
+                            index: 'index.html',
+                            maxAge: 300000
+                        }
+                    }
                 }
             }
         },
@@ -28,7 +36,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['nojquery.js', 'Gruntfile.js', 'demo.js'],
-                tasks: ['eslint']
+                tasks: ['eslint', 'uglify']
             },
             html: {
                 files: ['index.html'],
