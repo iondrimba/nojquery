@@ -68,9 +68,21 @@ describe('.contains() Test', function() {
     it('.list-contains should contain an elemt with a class colored', function() {
         var $$ = NoJQuery;
         var result = $$('.list-contains').contains('.colored'),
-        	contained = $$(result).find('.colored');
+            contained = $$(result).find('.colored');
         expect(contained.length).toEqual(1);
     });
 });
 
+describe('.empty() Test', function() {
 
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-empty a should empty value', function() {
+        var $$ = NoJQuery;
+        $$('.list-empty').find('a').empty();
+        var result = $$('.list-empty').find('a').text();
+        expect(result).toEqual('');
+    });
+});

@@ -166,15 +166,26 @@
     };
     NoJQuery.prototype.text = function(string) {
         var total = this.elmts.length,
-            i = 0;
+            i = 0,
+            result = '';
 
         try {
             for (i; i < total; i++) {
-                this.elmts[i].textContent = string;
+                if (string && (string.length > 0)) {
+                    this.elmts[i].textContent = string;
+                } else {
+                    result += this.elmts[i].textContent;
+                }
+
             }
         } catch (err) {
             console.error('text::', err);
         }
+
+        if (!string) {
+            return result;
+        }
+
         return this;
     };
     NoJQuery.prototype.html = function(string) {

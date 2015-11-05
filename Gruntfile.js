@@ -36,7 +36,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['nojquery.js', 'Gruntfile.js', 'demo.js'],
-                tasks: ['eslint']
+                tasks: ['eslint', 'uglify']
             },
             html: {
                 files: ['index.html'],
