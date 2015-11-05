@@ -1,5 +1,6 @@
 # NoJQuery 
 Used for personal projects/simple apps with little DOM interactions.
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Minified version: 6kb
 
