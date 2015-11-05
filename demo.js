@@ -71,6 +71,8 @@ requirejs(['dist/nojquery'], function(NoJQuery) {
         $$('.list-html').find('li').each(function(elmt, index) {
             $$(elmt).html('<a href="/" class="html-content"> Link - ' + index + '</a>');
         });
+
+        console.log($$('.list-html').find('a'));
     };
 
     function onResetHtmlClick(evt) {

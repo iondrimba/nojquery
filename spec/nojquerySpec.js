@@ -100,3 +100,19 @@ describe('.text() Test', function() {
         expect(result).toEqual('Hello');
     });
 });
+
+describe('.html() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-html should have 3 links', function() {
+        var $$ = NoJQuery;
+        $$('.list-html').find('li').each(function(elmt, index) {
+            $$(elmt).html('<a href="/" class="html-content"> Link - ' + index + '</a>');
+        });
+        var result = $$('.list-html').find('a').elmts.length;
+        expect(result).toEqual(3);
+    });
+});
