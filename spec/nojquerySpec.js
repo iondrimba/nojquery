@@ -116,3 +116,19 @@ describe('.html() Test', function() {
         expect(result).toEqual(3);
     });
 });
+
+describe('.getAttr() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-getattr should a attribute iduser with value of 89', function() {
+        var $$ = NoJQuery;
+        $$('.list-getattr').setAttr('iduser', 89);
+        var result = $$('.list-getattr').getAttr('iduser');
+        expect(result).toEqual('89');
+    });
+});
+
+
