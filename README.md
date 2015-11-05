@@ -1,6 +1,7 @@
 # NoJQuery 
 Used for personal projects/simple apps with little DOM interactions.
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
+
+[![Travis build status](https://travis-ci.org/iondrimba/NoJQuery.svg?branch=master)](https://travis-ci.org/iondrimba/NoJQuery)
 
 Minified version: 6kb
 
@@ -132,3 +133,4 @@ $$('selector').on('click', onButtonClick);
 ```js
 $$('selector').off('click', onButtonClick);
 ```
+[npm-url]: https://www.npmjs.com/package/nojquery
