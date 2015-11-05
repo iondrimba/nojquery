@@ -179,10 +179,24 @@ describe('.next() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-next - next element should be ', function() {
+    it('.list-next - next element should be .btn-two', function() {
         var $$ = NoJQuery;        
         var result = $$('.list-next').find('.btn-one').next(),
             nextElmt = $$(result.elmts[0]);
         expect(nextElmt.elmts[0]).toEqual($$('.list-next').find('.btn-two').elmts[0]);
+    });
+});
+
+describe('.prev() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-prev - prev element should be btn-one', function() {
+        var $$ = NoJQuery;        
+        var result = $$('.list-prev').find('.btn-two').prev(),
+            prevElmt = $$(result.elmts[0]);
+        expect(prevElmt.elmts[0]).toEqual($$('.list-prev').find('.btn-one').elmts[0]);
     });
 });
