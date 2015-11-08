@@ -61,7 +61,12 @@ module.exports = function(grunt) {
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'bin/coverage/coverage.json',
-                        report: 'bin/coverage'
+                        report: {
+                            type: 'lcov',
+                            options: {
+                                dir: 'bin/coverage/lcov'
+                            }
+                        }
                     }
                 }
             }
@@ -72,7 +77,7 @@ module.exports = function(grunt) {
                 // When true, grunt-coveralls will only print a warning rather than
                 // an error, to prevent CI builds from failing unnecessarily (e.g. if
                 // coveralls.io is down). Optional, defaults to false.
-                src: 'bin/coverage/coverage.json',
+                src: 'bin/coverage/lcov/*.info',
                 force: true
             }
         },
