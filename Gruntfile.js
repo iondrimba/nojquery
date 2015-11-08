@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
-    require('load-grunt-tasks')(grunt);
+    require('load-grunt-tasks')(grunt, {
+        pattern: ['grunt-*', '!grunt-template-jasmine-istanbul']
+    });
 
     grunt.initConfig({
         connect: {
@@ -7,7 +9,7 @@ module.exports = function(grunt) {
                 options: {
                     port: 9000,
                     hostname: '*',
-                    open:true,
+                    open: true,
                     base: {
                         path: '.',
                         options: {
@@ -51,6 +53,23 @@ module.exports = function(grunt) {
                 specs: 'spec/*.js',
                 vendor: 'spec/vendors/jquery.js',
                 helpers: 'spec/vendors/jasmine-jquery.js'
+            },
+            coverage: {
+                src: ['nojquery.js'],
+                options: {
+                    specs: ['spec/*.js'],
+                    template: require('grunt-template-jasmine-istanbul'),
+                    templateOptions: {
+                        coverage: 'bin/coverage/coverage.json',
+                        report: 'bin/coverage',
+                        thresholds: {
+                            lines: 75,
+                            statements: 75,
+                            branches: 75,
+                            functions: 90
+                        }
+                    }
+                }
             }
         },
         coveralls: {
@@ -59,6 +78,7 @@ module.exports = function(grunt) {
                 // When true, grunt-coveralls will only print a warning rather than
                 // an error, to prevent CI builds from failing unnecessarily (e.g. if
                 // coveralls.io is down). Optional, defaults to false.
+                src: 'bin/coverage/coverage.json',
                 force: true
             }
         },

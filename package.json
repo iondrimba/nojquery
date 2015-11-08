@@ -33,6 +33,7 @@
     "grunt-coveralls": "^1.0.0",
     "grunt-eslint": "^17.3.1",
     "grunt-istanbul": "^0.6.1",
+    "grunt-template-jasmine-istanbul": "^0.3.4",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^2.1.4",
     "load-grunt-tasks": "^3.3.0",
