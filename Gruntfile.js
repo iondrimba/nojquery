@@ -79,6 +79,10 @@ module.exports = function(grunt) {
                 // coveralls.io is down). Optional, defaults to false.
                 src: 'bin/coverage/lcov/lcov.info',
                 force: false
+            },
+            test: {
+                // Target-specific LCOV coverage file 
+                src: 'bin/coverage/lcov/*.info'
             }
         },
     });
