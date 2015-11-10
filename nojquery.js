@@ -109,7 +109,7 @@
 
         try {
             for (i; i < total; i++) {
-                if (this.elmts[i].classList) {
+                if (this.elmts[i].classList && this.elmts[i].classList.contains) {
                     result = this.elmts[i].classList.contains(className);
                 } else {
                     result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
@@ -126,7 +126,7 @@
             i = 0;
         try {
             for (i; i < total; i++) {
-                if (this.elmts[i].classList) {
+                if (this.elmts[i].classList && this.elmts[i].classList.remove) {
                     this.elmts[i].classList.remove(className);
                 } else {
                     this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');

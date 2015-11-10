@@ -9,7 +9,7 @@ requirejs(['nojquery'], function(NoJQuery) {
     $$('#btn-find').on('click', onFindClick);
 
     //ADD CLASS
-    function onAddClassClick(evt) {
+    function onAddClassClick(evt) {        
         $$('.list').find('a').addClass('colored');
     };
 
