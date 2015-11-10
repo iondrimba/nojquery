@@ -255,7 +255,6 @@
 
         return removed;
     };
-
     NoJQuery.prototype.removeAttr = function(attr) {
         var total = this.elmts.length,
             i = 0,
@@ -299,7 +298,6 @@
         }
         return this;
     };
-
     NoJQuery.prototype.append = function(el) {
         var total = this.previousElmt.length,
             i = 0,
@@ -324,9 +322,7 @@
             console.error('append::', err);
         }
         return this;
-
     };
-
     NoJQuery.prototype.prepend = function(el) {
         var total = this.previousElmt.length,
             i = 0,
@@ -356,26 +352,27 @@
         }
         return this;
     };
-
     NoJQuery.prototype.on = function(eventName, eventHandler) {
         var total = this.elmts.length,
             i = 0;
         try {
             for (i; i < total; i++) {
-                this.elmts[i].addEventListener(eventName, eventHandler, false);
+                this.elmts[i][eventName] = eventHandler;
+                this.elmts[i].addEventListener(eventName, this.elmts[i][eventName], false);
             }
         } catch (err) {
             console.log('on::', err);
         }
 
         return this;
-    };
+    };  
     NoJQuery.prototype.off = function(eventName, eventHandler) {
         var total = this.elmts.length,
             i = 0;
         try {
-            for (i; i < total; i++) {
-                this.elmts[i].removeEventListener(eventName, eventHandler, false);
+            for (i; i < total; i++) {                
+                this.elmts[i].removeEventListener(eventName, this.elmts[i][eventName], false);
+                this.elmts[i][eventName] = null;
             }
         } catch (err) {
             console.log('off::', err);

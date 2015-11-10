@@ -244,3 +244,40 @@ describe('.prepend() Test', function() {
         expect(result.elmts[0]).toEqual(div.elmts[0]);
     });
 });
+
+describe('.on() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-addlistener - should have a listener for click', function() {
+        var $$ = NoJQuery;
+
+        function onButtonClick() {
+        };
+
+        $$('.list-addlistener').find('button').on('click', onButtonClick);
+        var result = $$('.list-addlistener').find('button').elmts[0]['click'];
+        expect(result).toEqual(onButtonClick);
+    });
+});
+
+describe('.off() Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-addlistener - should not have a listener for click', function() {
+        var $$ = NoJQuery;
+
+        function onButtonClick() {
+        };
+
+        $$('.list-addlistener').find('button').on('click', onButtonClick);
+        $$('.list-addlistener').find('button').off('click', onButtonClick);
+        var result = $$('.list-addlistener').find('button').elmts[0]['click'];
+        expect(result).toBeNull();
+    });
+});

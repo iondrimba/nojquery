@@ -169,6 +169,7 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     function onAddListenerClick(evt) {
         $$('.list-addlistener').find('button').on('click', onButtonClick);
+        //console.log($$('.list-addlistener').find('button').elmts[0].dispatchEvent('click'));
     };
 
     function onRemoveListenerClick(evt) {
