@@ -259,6 +259,21 @@ describe('.prepend() Test', function() {
     });
 });
 
+describe('.prepend() Node Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-prepend - should have a link before a span', function() {
+        var $$ = NoJQuery;
+        $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
+        var result = $$('.list-prepend').find('span').prev(),
+            div = $$('.list-prepend').find('a');
+        expect(result.elmts[0]).toEqual(div.elmts[0]);
+    });
+});
+
 describe('.on() Test', function() {
 
     beforeEach(function() {
