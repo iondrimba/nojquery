@@ -313,9 +313,9 @@
                 if (textNode) {
                     this.html(el);
                 } else {
+                    console.log('append node', this, node);
                     this.previousElmt[i].appendChild(node);
                     node = el.elmts[0].cloneNode(true);
-
                 }
             }
         } catch (err) {

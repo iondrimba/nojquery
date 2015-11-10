@@ -9,7 +9,7 @@ requirejs(['nojquery'], function(NoJQuery) {
     $$('#btn-find').on('click', onFindClick);
 
     //ADD CLASS
-    function onAddClassClick(evt) {        
+    function onAddClassClick(evt) {
         $$('.list').find('a').addClass('colored');
     };
 
@@ -39,7 +39,7 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //CONTAINS
     function onContainsClick(evt) {
-        var result = $$('.list-contains').contains('.colored1');        
+        var result = $$('.list-contains').contains('.colored1');
         console.log(result);
     };
     $$('#btn-contains').on('click', onContainsClick);
