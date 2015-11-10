@@ -38,8 +38,8 @@ describe('.hasClass() without classList.contains Test', function() {
     });
 
     it('.list - should have a class colored', function() {
-        var $$ = NoJQuery;        
-        $$('.list').elmts[0].classList.contains=undefined;
+        var $$ = NoJQuery;
+        $$('.list').elmts[0].classList.contains = undefined;
         $$('.list').addClass('colored');
         var result = $$('.list').hasClass('colored');
         expect(result).toEqual(true);
@@ -183,7 +183,7 @@ describe('.remove() Test', function() {
     it('.list-removeelmt - should not have any li element', function() {
         var $$ = NoJQuery;
         $$('.list-removeelmt').find('li').remove();
-        var result = $$('.list-removeelmt').find('li').elmts.length;
+        var result = $$('.list-removeelmt').find('li').length;
         expect(result).toEqual(0);
     });
 });
@@ -230,6 +230,20 @@ describe('.append() Test', function() {
     });
 });
 
+describe('.append() Node Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-append - should have 1 link as children', function() {
+        var $$ = NoJQuery;
+        $$('.list-append').append($$('.link-append'));
+        var result = $$('.list-append').find('.link-append');
+        expect(result.elmts.length).toEqual(1);
+    });
+});
+
 describe('.prepend() Test', function() {
 
     beforeEach(function() {
@@ -254,8 +268,7 @@ describe('.on() Test', function() {
     it('.list-addlistener - should have a listener for click', function() {
         var $$ = NoJQuery;
 
-        function onButtonClick() {
-        };
+        function onButtonClick() {};
 
         $$('.list-addlistener').find('button').on('click', onButtonClick);
         var result = $$('.list-addlistener').find('button').elmts[0]['click'];
@@ -272,8 +285,7 @@ describe('.off() Test', function() {
     it('.list-addlistener - should not have a listener for click', function() {
         var $$ = NoJQuery;
 
-        function onButtonClick() {
-        };
+        function onButtonClick() {};
 
         $$('.list-addlistener').find('button').on('click', onButtonClick);
         $$('.list-addlistener').find('button').off('click', onButtonClick);

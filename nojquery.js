@@ -35,18 +35,19 @@
         this.elmts = [];
         this.length = 0;
         this.currentSelector = '';
-        this.previousElmt;
+        this.previousElmt,
+            this.previousObject;
 
         return function(selector) {
-            if (this.currentSelector) {
-                this.currentSelector = '';
-            }
+            this.currentSelector = '';
+
+
             if (isString(selector)) {
                 this.find(selector);
             } else {
                 this.elmts.push(selector);
             }
-            this.length = this.previousElmt.length;
+            this.length = this.elmts.length;
 
             return this;
         }.bind(this);
@@ -59,15 +60,17 @@
 
         try {
 
-            this.elmts = [];
             this.currentSelector += ' ' + selector;
             nodes = document.querySelectorAll(this.currentSelector);
             total = nodes.length;
 
             if (total) {
                 this.previousElmt = this.elmts;
+                this.elmts = [];
+                this.length = total;
             } else {
                 this.previousElmt = [];
+                this.length = 0;
             }
 
             for (i; i < total; i++) {
@@ -313,7 +316,6 @@
                 if (textNode) {
                     this.html(el);
                 } else {
-                    console.log('append node', this, node);
                     this.previousElmt[i].appendChild(node);
                     node = el.elmts[0].cloneNode(true);
                 }
@@ -365,12 +367,12 @@
         }
 
         return this;
-    };  
+    };
     NoJQuery.prototype.off = function(eventName, eventHandler) {
         var total = this.elmts.length,
             i = 0;
         try {
-            for (i; i < total; i++) {                
+            for (i; i < total; i++) {
                 this.elmts[i].removeEventListener(eventName, this.elmts[i][eventName], false);
                 this.elmts[i][eventName] = null;
             }

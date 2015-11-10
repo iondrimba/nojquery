@@ -106,8 +106,10 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //REMOVE ELMT
     function onRemoveElmtClick(evt) {
+        //$$('.list-removeelmt').find('li').remove();
         $$('.list-removeelmt').find('li').remove();
-        console.log($$('.list-removeelmt').find('li').elmts.length);
+        var result = $$('.list-removeelmt').find('li');
+        console.log(result);
     };
 
     function onResetRemoveElmtClick(evt) {
