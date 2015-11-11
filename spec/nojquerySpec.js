@@ -25,7 +25,7 @@ describe('.find() exception Test', function() {
     it('should throw find exception', function() {
         var $$ = NoJQuery;
 
-        expect(function(){
+        expect(function() {
             $$('.list-find').find('=');
         }).toThrow();
     });
@@ -69,7 +69,7 @@ describe('.addClass() exceptition Test', function() {
 
     it('.list - should throw an addClass exceptition', function() {
         var $$ = NoJQuery;
-         expect(function(){
+        expect(function() {
             $$('.list').addClass($$);
         }).toThrow();
     });
@@ -103,6 +103,20 @@ describe('.removeClass() Test', function() {
         $$('.list-remove').find('li').removeClass('colored');
         var result = $('.list-remove').find('li').hasClass('colored');
         expect(result).toEqual(false);
+    });
+});
+
+describe('.removeClass() exceptition Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('li - should should throw a removeClass exceptition', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            $$('.list-remove').find('li').removeClass($$)
+        }).toThrow();
     });
 });
 

@@ -137,7 +137,7 @@
             }
 
         } catch (err) {
-            console.error('removeClass::', err);
+             throw new Error('removeClass:: ' + err.message);
         }
         return this;
     };
