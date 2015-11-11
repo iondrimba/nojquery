@@ -46,7 +46,7 @@ describe('.removeClass() Test', function() {
     });
 });
 
-describe('.removeClass() without classList.contains Test', function() {
+describe('.removeClass() without classList.remove Test', function() {
 
     beforeEach(function() {
         setUpHTMLFixture();
@@ -54,7 +54,7 @@ describe('.removeClass() without classList.contains Test', function() {
 
     it('li - should not have a class colored', function() {
         var $$ = NoJQuery;
-        $$('.list-remove').find('li').elmts[0].classList.contains = undefined;
+        $$('.list-remove').find('li').elmts[0].classList.remove = undefined;
         $$('.list-remove').find('li').removeClass('colored');
         var result = $('.list-remove').find('li').hasClass('colored');
         expect(result).toEqual(false);
