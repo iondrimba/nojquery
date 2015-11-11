@@ -16,6 +16,21 @@ describe('.find() Test', function() {
     });
 });
 
+describe('.find() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('should throw find exception', function() {
+        var $$ = NoJQuery;
+
+        expect(function(){
+            $$('.list-find').find('=');
+        }).toThrow();
+    });
+});
+
 describe('fluid sintax Test', function() {
 
     beforeEach(function() {
@@ -43,6 +58,20 @@ describe('.addClass() Test', function() {
         $$('.list').addClass('colored');
         var result = $$('.list').hasClass('colored');
         expect(result).toEqual(true);
+    });
+});
+
+describe('.addClass() exceptition Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list - should throw an addClass exceptition', function() {
+        var $$ = NoJQuery;
+         expect(function(){
+            $$('.list').addClass($$);
+        }).toThrow();
     });
 });
 

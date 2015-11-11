@@ -3,7 +3,7 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //FIND
     function onFindClick(evt) {
-        var result = $$('li').find('a');
+        var result = $$('li').find('=');
         console.log(result.elmts[0]);
     };
     $$('#btn-find').on('click', onFindClick);

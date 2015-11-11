@@ -77,7 +77,7 @@
                 this.elmts[i] = nodes[i];
             }
         } catch (err) {
-            console.error('find::', err);
+            throw new Error('find:: ' + err.message);
         }
 
         return this;
@@ -100,7 +100,7 @@
                 }
             }
         } catch (err) {
-            console.error('addClass::', err);
+            throw new Error('addClass:: ' + err.message);
         }
 
         return this;
