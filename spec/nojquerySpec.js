@@ -16,6 +16,21 @@ describe('.find() Test', function() {
     });
 });
 
+describe('fluid sintax Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('should find a .child-link from .list-child', function() {
+        var $$ = NoJQuery;
+
+        var result = $$('.list-fluid').find('.list-fluid-child').find('li').find('a');
+        expect($$(result.elmts[0]).hasClass('child-link')).toEqual(true);
+    });
+});
+
+
 describe('.addClass() Test', function() {
 
     beforeEach(function() {
