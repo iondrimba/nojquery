@@ -93,7 +93,7 @@
 
         try {
             for (i; i < total; i++) {
-                if (this.elmts[i].classList) {
+                if (this.elmts[i].classList && this.elmts[i].classList.contains) {
                     this.elmts[i].classList.add(className);
                 } else {
                     this.elmts[i].className += ' ' + className;

@@ -31,6 +31,22 @@ describe('.addClass() Test', function() {
     });
 });
 
+describe('.addClass() simulate no classList Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list - should have a class colored', function() {
+        var $$ = NoJQuery;
+
+        $$('.list').elmts[0].classList.contains = undefined;
+        $$('.list').addClass('colored');
+        var result = $$('.list').hasClass('colored');
+        expect(result).toEqual(true);
+    });
+});
+
 describe('.removeClass() Test', function() {
 
     beforeEach(function() {
