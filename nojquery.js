@@ -88,10 +88,11 @@
         });
     };
     NoJQuery.prototype.addClass = function(className) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 if (this.elmts[i].classList && this.elmts[i].classList.contains) {
                     this.elmts[i].classList.add(className);
@@ -107,10 +108,11 @@
     };
     NoJQuery.prototype.hasClass = function(className) {
         var result = false,
-            total = this.elmts.length,
+            total = 0,
             i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 if (this.elmts[i].classList && this.elmts[i].classList.contains) {
                     result = this.elmts[i].classList.contains(className);
@@ -119,15 +121,16 @@
                 }
             }
         } catch (err) {
-          throw new Error('hasClass:: ' + err.message);
+            throw new Error('hasClass:: ' + err.message);
         }
 
         return result;
     };
     NoJQuery.prototype.removeClass = function(className) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 if (this.elmts[i].classList && this.elmts[i].classList.remove) {
                     this.elmts[i].classList.remove(className);
@@ -137,16 +140,17 @@
             }
 
         } catch (err) {
-             throw new Error('removeClass:: ' + err.message);
+            throw new Error('removeClass:: ' + err.message);
         }
         return this;
     };
     NoJQuery.prototype.contains = function(selector) {
         var result = {},
-            total = this.elmts.length,
+            total = 0,
             i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 result = this.elmts[i].querySelector(selector);
                 if (result) {
@@ -160,25 +164,27 @@
         return result;
     };
     NoJQuery.prototype.empty = function() {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 this.elmts[i].innerHTML = '';
             }
         } catch (err) {
-           throw new Error('empty:: ' + err.message);
+            throw new Error('empty:: ' + err.message);
         }
 
         return this;
     };
     NoJQuery.prototype.text = function(string) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0,
             result = '';
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 if (string && (string.length > 0)) {
                     this.elmts[i].textContent = string;
@@ -198,10 +204,11 @@
         return this;
     };
     NoJQuery.prototype.html = function(string) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 this.elmts[i].innerHTML = string;
             }
@@ -211,11 +218,12 @@
         return this;
     };
     NoJQuery.prototype.getAttr = function(attr) {
-        var total = 1,
+        var total = 0,
             i = 0,
             result = '';
 
         try {
+            total = 1;
             for (i; i < total; i++) {
                 result = this.elmts[i].getAttribute(attr);
             }
@@ -225,10 +233,11 @@
         return result;
     };
     NoJQuery.prototype.setAttr = function(attr, val) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 this.elmts[i].setAttribute(attr, val);
             }
@@ -238,12 +247,13 @@
         return this;
     };
     NoJQuery.prototype.remove = function(elmt) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0,
             elmt = {},
             removed = [];
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 elmt = this.elmts[i];
                 elmt.parentNode.removeChild(elmt);
@@ -259,11 +269,12 @@
         return removed;
     };
     NoJQuery.prototype.removeAttr = function(attr) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0,
             elmt = {};
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 elmt = this.elmts[i];
                 elmt.removeAttribute(attr);
@@ -274,11 +285,11 @@
         return this;
     };
     NoJQuery.prototype.prev = function(elmt) {
-        var total = this.elmts.length,
-            i = 0,
-            nextElemt;
+        var total = 0,
+            i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 this.elmts[i] = this.elmts[i].previousElementSibling;
             }
@@ -288,11 +299,11 @@
         return this;
     };
     NoJQuery.prototype.next = function() {
-        var total = this.elmts.length,
-            i = 0,
-            nextElemt;
+        var total = 0,
+            i = 0;
 
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 this.elmts[i] = this.elmts[i].nextElementSibling;
             }
@@ -302,16 +313,19 @@
         return this;
     };
     NoJQuery.prototype.append = function(el) {
-        var total = this.previousElmt.length,
+        var total = 0,
             i = 0,
             node,
-            textNode = isString(el);
-
-        if (textNode === false) {
-            node = el.elmts[0];
-        }
+            textNode;
 
         try {
+            total = this.previousElmt.length;
+            textNode = isString(el);
+
+            if (textNode === false) {
+                node = el.elmts[0];
+            }
+
             for (i; i < total; i++) {
                 if (textNode) {
                     this.html(el);
@@ -326,17 +340,19 @@
         return this;
     };
     NoJQuery.prototype.prepend = function(el) {
-        var total = this.previousElmt.length,
+        var total = 0,
             i = 0,
             node,
-            textNode = isString(el),
+            textNode,
             parent;
 
-        if (textNode === false) {
-            node = el.elmts[0];
-        }
-
         try {
+            total = this.previousElmt.length;
+            textNode = isString(el);
+
+            if (textNode === false) {
+                node = el.elmts[0];
+            }
             for (i; i < total; i++) {
                 if (textNode) {
                     parent = this.elmts[i].parentNode || this.elmts[i].parent;
@@ -355,9 +371,11 @@
         return this;
     };
     NoJQuery.prototype.on = function(eventName, eventHandler) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
+
         try {
+            total = this.elmts.length;
             for (i; i < total; i++) {
                 this.elmts[i][eventName] = eventHandler;
                 this.elmts[i].addEventListener(eventName, this.elmts[i][eventName], false);
