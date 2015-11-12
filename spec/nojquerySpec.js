@@ -171,7 +171,7 @@ describe('.hasClass() exception Test', function() {
 
     it('.list - should throw an exception hasClass', function() {
         var $$ = NoJQuery;
-         expect(function() {
+        expect(function() {
             $$('.list').hasClass($$);
         }).toThrow();
     });
@@ -216,6 +216,22 @@ describe('.empty() Test', function() {
         $$('.list-empty').find('a').empty();
         var result = $$('.list-empty').find('a').text();
         expect(result).toEqual('');
+    });
+});
+
+describe('.empty() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-empty a - should have an empty value', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var a = $$('.list-empty').find('a');
+            a.elmts=undefined;
+            a.empty();
+        }).toThrow();
     });
 });
 

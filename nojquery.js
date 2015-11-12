@@ -168,7 +168,7 @@
                 this.elmts[i].innerHTML = '';
             }
         } catch (err) {
-            console.error('empty::', err);
+           throw new Error('empty:: ' + err.message);
         }
 
         return this;
