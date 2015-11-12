@@ -229,7 +229,7 @@ describe('.empty() exception Test', function() {
         var $$ = NoJQuery;
         expect(function() {
             var a = $$('.list-empty').find('a');
-            a.elmts=undefined;
+            a.elmts = undefined;
             a.empty();
         }).toThrow();
     });
@@ -246,6 +246,21 @@ describe('.text() Test', function() {
         $$('.list-text').find('a').text('Hello');
         var result = $$('.list-text').find('a').text();
         expect(result).toEqual('Hello');
+    });
+});
+
+describe('.text() exception Test', function() {
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-text should throw a text exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var a = $$('.list-text').find('a');
+            a.elmts = undefined;
+            a.text($$);
+        }).toThrow();
     });
 });
 

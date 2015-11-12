@@ -194,7 +194,7 @@
 
             }
         } catch (err) {
-            console.error('text::', err);
+            throw new Error('text:: ' + err.message);
         }
 
         if (!string) {
@@ -387,9 +387,11 @@
         return this;
     };
     NoJQuery.prototype.off = function(eventName, eventHandler) {
-        var total = this.elmts.length,
+        var total = 0,
             i = 0;
         try {
+            total = this.elmts.length;
+            i = 0;
             for (i; i < total; i++) {
                 this.elmts[i].removeEventListener(eventName, this.elmts[i][eventName], false);
                 this.elmts[i][eventName] = null;
