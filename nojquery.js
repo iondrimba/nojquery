@@ -213,7 +213,7 @@
                 this.elmts[i].innerHTML = string;
             }
         } catch (err) {
-            console.log('html::', err);
+            throw new Error('html:: ' + err.message);
         }
         return this;
     };

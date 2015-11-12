@@ -280,6 +280,21 @@ describe('.html() Test', function() {
     });
 });
 
+describe('.html() exception Test', function() {
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-html - should throw a html exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var li = $$('.list-html').find('li:first-child');
+            li.elmts = undefined;
+            li.html($$);
+        }).toThrow();
+    });
+});
+
 describe('.getAttr() Test', function() {
 
     beforeEach(function() {
