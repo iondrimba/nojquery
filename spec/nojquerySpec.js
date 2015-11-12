@@ -61,13 +61,13 @@ describe('.addClass() Test', function() {
     });
 });
 
-describe('.addClass() exceptition Test', function() {
+describe('.addClass() exception Test', function() {
 
     beforeEach(function() {
         setUpHTMLFixture();
     });
 
-    it('.list - should throw an addClass exceptition', function() {
+    it('.list - should throw an addClass exception', function() {
         var $$ = NoJQuery;
         expect(function() {
             $$('.list').addClass($$);
@@ -106,13 +106,13 @@ describe('.removeClass() Test', function() {
     });
 });
 
-describe('.removeClass() exceptition Test', function() {
+describe('.removeClass() exception Test', function() {
 
     beforeEach(function() {
         setUpHTMLFixture();
     });
 
-    it('li - should should throw a removeClass exceptition', function() {
+    it('li - should should throw a removeClass exception', function() {
         var $$ = NoJQuery;
         expect(function() {
             $$('.list-remove').find('li').removeClass($$)
