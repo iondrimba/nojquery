@@ -155,7 +155,7 @@
                 }
             }
         } catch (err) {
-            console.error('contains::', err);
+            throw new Error('contains:: ' + err.message);
         }
         return result;
     };

@@ -190,6 +190,21 @@ describe('.contains() Test', function() {
     });
 });
 
+describe('.contains() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-contains - should should throw a contains exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            $$('.list-contains').contains($$);
+        }).toThrow();
+    });
+});
+
+
 describe('.empty() Test', function() {
 
     beforeEach(function() {
