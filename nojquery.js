@@ -119,7 +119,7 @@
                 }
             }
         } catch (err) {
-            console.error('hasClass::', err);
+          throw new Error('hasClass:: ' + err.message);
         }
 
         return result;

@@ -163,6 +163,20 @@ describe('.hasClass() without classList.contains Test', function() {
     });
 });
 
+describe('.hasClass() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list - should throw an exception hasClass', function() {
+        var $$ = NoJQuery;
+         expect(function() {
+            $$('.list').hasClass($$);
+        }).toThrow();
+    });
+});
+
 describe('.contains() Test', function() {
 
     beforeEach(function() {
