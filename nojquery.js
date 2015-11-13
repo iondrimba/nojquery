@@ -294,7 +294,7 @@
                 this.elmts[i] = this.elmts[i].previousElementSibling;
             }
         } catch (err) {
-            console.error('prev::', err);
+            throw new Error('prev:: ' + err.message);
         }
         return this;
     };
@@ -335,7 +335,7 @@
                 }
             }
         } catch (err) {
-            console.error('append::', err);
+           throw new Error('append:: ' + err.message);
         }
         return this;
     };
@@ -366,7 +366,7 @@
 
             }
         } catch (err) {
-            console.error('prepend::', err);
+           throw new Error('prepend:: ' + err.message);
         }
         return this;
     };
@@ -381,7 +381,7 @@
                 this.elmts[i].addEventListener(eventName, this.elmts[i][eventName], false);
             }
         } catch (err) {
-            console.log('on::', err);
+            throw new Error('on:: ' + err.message);
         }
 
         return this;
@@ -397,7 +397,7 @@
                 this.elmts[i][eventName] = null;
             }
         } catch (err) {
-            console.log('off::', err);
+            throw new Error('off:: ' + err.message);
         }
 
         return this;

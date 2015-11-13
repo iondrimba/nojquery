@@ -460,6 +460,22 @@ describe('.prev() Test', function() {
     });
 });
 
+describe('.prev() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-prev - should throw exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var el = $$('.list-prev').find('.btn-two');
+            el.elmts = undefined;
+            el.prev();
+        }).toThrow();
+    });
+});
+
 describe('.append() Test', function() {
 
     beforeEach(function() {
