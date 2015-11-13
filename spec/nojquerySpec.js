@@ -347,9 +347,9 @@ describe('.setAttr() exception Test', function() {
     it('.list-setattr - should throw an exception setAttr', function() {
         var $$ = NoJQuery;
         expect(function() {
-            var setAttr = $$('.list-setattr');
-            setAttr.elmts = undefined;
-            setAttr('readonly', 1);
+            var elmt = $$('.list-setattr');
+            elmt.elmts = undefined;
+            elmt.setAttr('readonly', 1);
         }).toThrow();
     });
 });
