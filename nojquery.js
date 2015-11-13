@@ -242,7 +242,7 @@
                 this.elmts[i].setAttribute(attr, val);
             }
         } catch (err) {
-            console.log('setAttr', err);
+            throw new Error('setAttr:: ' + err.message);
         }
         return this;
     };

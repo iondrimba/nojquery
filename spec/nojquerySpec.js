@@ -338,6 +338,22 @@ describe('.setAttr() Test', function() {
     });
 });
 
+describe('.setAttr() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-setattr - should throw an exception setAttr', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var setAttr = $$('.list-setattr');
+            setAttr.elmts = undefined;
+            setAttr('readonly', 1);
+        }).toThrow();
+    });
+});
+
 describe('.removeAttr() Test', function() {
 
     beforeEach(function() {
