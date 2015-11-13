@@ -308,7 +308,7 @@
                 this.elmts[i] = this.elmts[i].nextElementSibling;
             }
         } catch (err) {
-            console.error('next::', err);
+            throw new Error('next:: ' + err.message);
         }
         return this;
     };

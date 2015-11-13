@@ -430,6 +430,22 @@ describe('.next() Test', function() {
     });
 });
 
+describe('.next() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-next - should throw a next() exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var el = $$('.list-next').find('.btn-one')
+            el.elmts = undefined;
+            el.next();
+        }).toThrow();
+    });
+});
+
 describe('.prev() Test', function() {
 
     beforeEach(function() {
