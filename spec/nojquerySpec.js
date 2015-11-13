@@ -490,6 +490,22 @@ describe('.append() Test', function() {
     });
 });
 
+describe('.append() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-append - should throw exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var el = $$('.list-append').find('li');
+            el.elmts = undefined;
+            el.append('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        }).toThrow();
+    });
+});
+
 describe('.append() Node Test', function() {
 
     beforeEach(function() {
