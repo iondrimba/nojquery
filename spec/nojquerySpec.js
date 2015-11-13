@@ -620,3 +620,24 @@ describe('.off() Test', function() {
         expect(result).toBeNull();
     });
 });
+
+
+describe('.off() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-addlistener - should not have a listener for click', function() {
+        var $$ = NoJQuery;
+
+        function onButtonClick() {};
+
+        $$('.list-addlistener').find('button').on('click', onButtonClick);
+        expect(function() {
+            var el = $$('.list-addlistener').find('button');
+            el.elmts = undefined;
+            el.off('click', onButtonClick);
+        }).toThrow();
+    });
+});
