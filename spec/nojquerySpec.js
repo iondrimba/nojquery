@@ -316,7 +316,7 @@ describe('.getAttr() exception Test', function() {
     });
     it('.list-getattr - should throw an getAttr exception', function() {
         var $$ = NoJQuery;
-         expect(function() {
+        expect(function() {
             var getAttr = $$('.list-getattr');
             getAttr.elmts = undefined;
             getAttr.getAttr(3);
@@ -366,6 +366,23 @@ describe('.removeAttr() Test', function() {
         $$('.list-setattr').removeAttr('readonly');
         var result = $$('.list-setattr').getAttr('readonly');
         expect(result).toBeNull();
+    });
+});
+
+describe('.removeAttr() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-setattr - should a readonly exception', function() {
+        var $$ = NoJQuery;
+        $$('.list-setattr').setAttr('readonly', 1);
+        expect(function() {
+            var el = $$('.list-setattr');
+            el.elmts = undefined;
+            el.removeAttr('readonly');
+        }).toThrow();
     });
 });
 

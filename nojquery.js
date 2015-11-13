@@ -260,7 +260,7 @@
                 removed[i] = elmt;
             }
         } catch (err) {
-            console.log('remove::', err);
+            throw new Error('remove:: ' + err.message);
         }
 
         this.previousElmt = [];
@@ -280,7 +280,7 @@
                 elmt.removeAttribute(attr);
             }
         } catch (err) {
-            console.log('removeAttr::', err);
+            throw new Error('removeAttr:: ' + err.message);
         }
         return this;
     };
