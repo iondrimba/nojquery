@@ -536,6 +536,22 @@ describe('.prepend() Test', function() {
     });
 });
 
+describe('.prepend() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-prepend - should have a div before a span', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var el = $$('.list-prepend').find('li').find('span');
+            el.elmts = undefined;
+            el.prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        }).toThrow();
+    });
+});
+
 describe('.prepend() Node Test', function() {
 
     beforeEach(function() {
