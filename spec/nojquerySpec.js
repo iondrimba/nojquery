@@ -400,6 +400,22 @@ describe('.remove() Test', function() {
     });
 });
 
+describe('.remove() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-removeelmt - should throw remove() exception', function() {
+        var $$ = NoJQuery;
+        expect(function() {
+            var el = $$('.list-removeelmt').find('li');
+            el.elmts = undefined;
+            el.remove();
+        }).toThrow();
+    });
+});
+
 describe('.next() Test', function() {
 
     beforeEach(function() {
