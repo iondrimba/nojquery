@@ -542,7 +542,7 @@ describe('.prepend() exception Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-prepend - should have a div before a span', function() {
+    it('.list-prepend - should throw an exception', function() {
         var $$ = NoJQuery;
         expect(function() {
             var el = $$('.list-prepend').find('li').find('span');
@@ -581,6 +581,25 @@ describe('.on() Test', function() {
         $$('.list-addlistener').find('button').on('click', onButtonClick);
         var result = $$('.list-addlistener').find('button').elmts[0]['click'];
         expect(result).toEqual(onButtonClick);
+    });
+});
+
+describe('.on() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+
+    it('.list-addlistener - should should throw an exception', function() {
+        var $$ = NoJQuery;
+
+        function onButtonClick() {};
+
+        expect(function() {
+            var el = $$('.list-addlistener').find('button');
+            el.elmts = undefined;
+            el.on('click', onButtonClick);
+        }).toThrow();
     });
 });
 
