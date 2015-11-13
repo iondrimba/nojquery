@@ -228,7 +228,7 @@
                 result = this.elmts[i].getAttribute(attr);
             }
         } catch (err) {
-            console.log('getAttr::', err);
+            throw new Error('getAttr:: ' + err.message);
         }
         return result;
     };

@@ -86,8 +86,8 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //GET ATTR
     function onGetAttrClick(evt) {
-        var result = $$('.list-getattr').getAttr('class');
-        console.log(result);
+        var result = $$('.list-getattr').getAttr(9);
+        console.log('onGetAttrClick', result);
     };
     $$('#btn-getattr').on('click', onGetAttrClick);
 

@@ -309,6 +309,21 @@ describe('.getAttr() Test', function() {
     });
 });
 
+describe('.getAttr() exception Test', function() {
+
+    beforeEach(function() {
+        setUpHTMLFixture();
+    });
+    it('.list-getattr - should throw an getAttr exception', function() {
+        var $$ = NoJQuery;
+         expect(function() {
+            var getAttr = $$('.list-getattr');
+            getAttr.elmts = undefined;
+            getAttr.getAttr(3);
+        }).toThrow();
+    });
+});
+
 describe('.setAttr() Test', function() {
 
     beforeEach(function() {
