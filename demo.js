@@ -16,8 +16,11 @@ requirejs(['nojquery'], function(NoJQuery) {
     function onResetAddClassClick(evt) {
         $$('.list').find('a').removeClass('colored');
     };
-    $$('#btn-addclass').on('click', onAddClassClick);
-    $$('#btn-reset-addclass').on('click', onResetAddClassClick);
+    var btnAddClass = $$('#btn-addclass'),
+        btnResetClass = $$('#btn-reset-addclass');
+
+    btnAddClass.on('click', onAddClassClick);
+    btnResetClass.on('click', onResetAddClassClick);
 
     //REMOVE CLASS
     function onRemoveClassClick(evt) {
@@ -150,11 +153,12 @@ requirejs(['nojquery'], function(NoJQuery) {
     $$('#btn-append').on('click', onAppendClick);
     $$('#btn-reset-append').on('click', onResetAppendClick);
 
-    //PREPEND
+    // //PREPEND
     function onPrependClick(evt) {
-        $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
-        var result = $$('.list-prepend').find('span').prev();
-        console.log(result);
+        $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
+        var result = $$('.list-prepend').find('span').prev(),
+            link = $$('.list-prepend').find('a');
+        console.log(result.elmts[0], link.elmts[0]);
     };
 
     function onResetPrependClick(evt) {

@@ -31,16 +31,26 @@
         return result;
     };
 
+    function cloneObject(obj) {
+        if (obj === null || typeof obj !== 'object') {
+            return obj;
+        }
+
+        var temp = obj.constructor(); // give temp the original obj's constructor
+        for (var key in obj) {
+            temp[key] = cloneObject(obj[key]);
+        }
+
+        return temp;
+    }
+
     function NoJQuery() {
-        this.elmts = [];
-        this.length = 0;
-        this.currentSelector = '';
-        this.previousElmt,
-            this.previousObject;
 
         return function(selector) {
+            this.elmts = [];
+            this.length = 0;
             this.currentSelector = '';
-
+            this.previousElmt;
 
             if (isString(selector)) {
                 this.find(selector);
@@ -48,8 +58,14 @@
                 this.elmts.push(selector);
             }
             this.length = this.elmts.length;
+            var clone = {};
+            clone.elmts = this.elmts;
+            clone.length = this.length;
+            clone.currentSelector = this.currentSelector;
+            clone.previousElmt = this.previousElmt;
 
-            return this;
+            clone['__proto__'] = NoJQuery.prototype;
+            return clone;
         }.bind(this);
     };
 
@@ -63,7 +79,6 @@
             this.currentSelector += ' ' + selector;
             nodes = document.querySelectorAll(this.currentSelector);
             total = nodes.length;
-
             if (total) {
                 this.previousElmt = this.elmts;
                 this.elmts = [];
@@ -335,7 +350,7 @@
                 }
             }
         } catch (err) {
-           throw new Error('append:: ' + err.message);
+            throw new Error('append:: ' + err.message);
         }
         return this;
     };
@@ -359,14 +374,14 @@
                     node = parseHTML(el);
                     parent.insertBefore(node, parent.firstChild);
                 } else {
-                    parent = this.previousElmt[i].parentNode || this.previousElmt[i].parent;
-                    parent.insertBefore(node, parent.firstChild);
+                    parent = this.previousElmt[i].firstChild.parentNode || this.previousElmt[i].firstChild.parent;
+                    parent.insertBefore(node, this.previousElmt[i].firstChild);
                     node = el.elmts[0].cloneNode(true);
                 }
 
             }
         } catch (err) {
-           throw new Error('prepend:: ' + err.message);
+            throw new Error('prepend:: ' + err.message);
         }
         return this;
     };
@@ -377,6 +392,7 @@
         try {
             total = this.elmts.length;
             for (i; i < total; i++) {
+
                 this.elmts[i][eventName] = eventHandler;
                 this.elmts[i].addEventListener(eventName, this.elmts[i][eventName], false);
             }
