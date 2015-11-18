@@ -26,8 +26,8 @@
         return nodes;
     }
 
-    function isString(selector) {
-        var result = (typeof selector === 'string');
+    function isString(obj) {
+        var result = (typeof obj === 'string');
         return result;
     };
 
@@ -332,7 +332,6 @@
                 if (textNode) {
                     this.html(el);
                 } else {
-                    console.log('append node', textNode);
                     this.previousElmt[i].appendChild(node);
                     node = el.elmts[0].cloneNode(true);
                 }

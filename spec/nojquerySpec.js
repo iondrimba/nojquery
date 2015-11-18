@@ -514,10 +514,9 @@ describe('.append() Node Test', function() {
 
     it('.list-append - should have 1 link as children', function() {
         var $$ = NoJQuery;
-        $$('.list-append').append($$('.link-append'));
-        var result = $$('.list-append').find('.link-append'),
-            link = $$('.list-append').find('.link-append');
-        expect(result.elmts[0]).toEqual(link.elmts[0]);
+        $$('.list-append').find('li').append($$('.link-append'));
+        var result = $$('.list-append').find('.link-append');
+        expect(result.elmts[0]).toEqual($$('.link-append').elmts[0]);
     });
 });
 
