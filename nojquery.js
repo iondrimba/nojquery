@@ -332,6 +332,7 @@
                 if (textNode) {
                     this.html(el);
                 } else {
+                    console.log('append node', textNode);
                     this.previousElmt[i].appendChild(node);
                     node = el.elmts[0].cloneNode(true);
                 }

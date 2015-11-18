@@ -142,11 +142,12 @@ requirejs(['nojquery'], function(NoJQuery) {
     function onAppendClick(evt) {
         $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-append').find('li').find('div');
-        console.log(result);
+        var a = $$('.list-append').find('li').append($$('.link-append'));
     };
 
     function onResetAppendClick(evt) {
         $$('.list-append').find('li').find('div').remove();
+        $$('.list-append').find('li').find('.link-append').remove();
         $$('.list-append').find('li').append('<span>li</span>');
     };
 
