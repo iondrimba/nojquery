@@ -5,11 +5,6 @@ Used for personal projects/simple apps with little DOM interactions.
 
 Minified version: 6kb
 
-### Future improvements:
-1. Cleaner and more intuitive API [ok]
-2. Test for each method 
-3. Documentation
-
 ### Implementation :
 UMD ready. It can be loaded via AMD, CommonJs and as global namespace.
 
