@@ -24,7 +24,6 @@ describe('.find() exception Test', function() {
 
     it('should throw find exception', function() {
         var $$ = NoJQuery;
-
         expect(function() {
             $$('.list-find').find('=');
         }).toThrow();

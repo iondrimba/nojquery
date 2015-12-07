@@ -297,7 +297,7 @@
             }
         } catch (err) {
             throw new Error('prev:: ' + err.message);
-        }
+        } 
         return this;
     };
     NoJQuery.prototype.next = function() {

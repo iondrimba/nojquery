@@ -30,6 +30,22 @@ module.exports = function(grunt) {
                 }
             }
         },
+        compress: {
+            main: {
+                options: {
+                    mode: 'gzip'
+                },
+                files: [
+                    {
+                        expand: true,
+                        src: ['nojquery.js'],
+                        dest: 'dist/',
+                        ext: '.gz.js'
+                    }
+                ]
+
+            }
+        },
         watch: {
             options: {
                 spawn: false,
@@ -38,7 +54,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['nojquery.js', 'Gruntfile.js', 'demo.js'],
-                tasks: ['eslint', 'uglify']
+                tasks: ['eslint', 'uglify', 'compress']
             },
             html: {
                 files: ['index.html'],
@@ -52,7 +68,7 @@ module.exports = function(grunt) {
             options: {
                 specs: 'spec/*.js',
                 vendor: 'spec/vendors/jquery.js',
-                helpers: 'spec/vendors/jasmine-jquery.js'
+                helpers: 'spec/helpers/*.js'
             },
             coverage: {
                 src: ['nojquery.js'],
@@ -94,6 +110,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
     grunt.registerTask('test', ['jasmine', 'coveralls']);
     grunt.registerTask('default', ['connect', 'watch']);
