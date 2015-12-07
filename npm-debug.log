@@ -1,0 +1,114 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/ion/Documents/NoJQuery',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/ion/.npm/nojquery/1.0.41/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/ion/.npm/nojquery/1.0.41/package.tgz',
+9 verbose tar pack   '/Users/ion/Documents/NoJQuery' ]
+10 verbose tarball /Users/ion/.npm/nojquery/1.0.41/package.tgz
+11 verbose folder /Users/ion/Documents/NoJQuery
+12 info prepublish nojquery@1.0.41
+13 verbose addLocalTarball adding from inside cache /Users/ion/.npm/nojquery/1.0.41/package.tgz
+14 silly cache afterAdd nojquery@1.0.41
+15 verbose afterAdd /Users/ion/.npm/nojquery/1.0.41/package/package.json not in flight; writing
+16 verbose afterAdd /Users/ion/.npm/nojquery/1.0.41/package/package.json written
+17 silly publish { name: 'nojquery',
+17 silly publish   version: '1.0.41',
+17 silly publish   description: ' (Work in Progress) Useful methods to replace jQuery',
+17 silly publish   main: 'nojquery.js',
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/iondrimba/NoJQuery.git' },
+17 silly publish   keywords: [ 'NoJQuery', 'jQuery', 'DOM' ],
+17 silly publish   author:
+17 silly publish    { name: 'Ion Drimba Filho',
+17 silly publish      email: 'iondrimba@gmail.com',
+17 silly publish      url: 'http://iondrimbafilho.me' },
+17 silly publish   license: 'ISC',
+17 silly publish   bugs: { url: 'https://github.com/iondrimba/NoJQuery/issues' },
+17 silly publish   homepage: 'https://github.com/iondrimba/NoJQuery#readme',
+17 silly publish   dependencies: {},
+17 silly publish   devDependencies:
+17 silly publish    { 'eslint ': ' ^ 1.8.0 ',
+17 silly publish      grunt: '^0.4.5',
+17 silly publish      'grunt-cli': '^0.1.13',
+17 silly publish      'grunt-contrib-compress': '^0.14.0',
+17 silly publish      'grunt-contrib-connect': '^0.11.2',
+17 silly publish      'grunt-contrib-jasmine': '^0.9.2',
+17 silly publish      'grunt-contrib-uglify': '^0.10.0',
+17 silly publish      'grunt-contrib-watch': '^0.6.1',
+17 silly publish      'grunt-coveralls': '^1.0.0',
+17 silly publish      'grunt-eslint': '^17.3.1',
+17 silly publish      'grunt-istanbul': '^0.6.1',
+17 silly publish      'grunt-template-jasmine-istanbul': '^0.3.4',
+17 silly publish      'jasmine-jquery': '^2.1.1',
+17 silly publish      jquery: '^2.1.4',
+17 silly publish      'load-grunt-tasks': '^3.3.0',
+17 silly publish      phantomjs: '^1.9.18' },
+17 silly publish   readme: '# NoJQuery \nUsed for personal projects/simple apps with little DOM interactions.\n\n[![Travis build status](https://travis-ci.org/iondrimba/NoJQuery.svg?branch=master)](https://travis-ci.org/iondrimba/NoJQuery) [![Coverage Status](https://coveralls.io/repos/iondrimba/NoJQuery/badge.svg?branch=master&service=github)](https://coveralls.io/github/iondrimba/NoJQuery?branch=master)\n\nMinified version: 6kb\n\nGziped version: 2kb\n\n### Implementation :\nUMD ready. It can be loaded via AMD, CommonJs and as global namespace.\n\n#### AMD\n```js\ndefine([\'nojquery\'], function(NoJQuery){\n    var $$ = NoJQuery;\n});\n```\n#### CommonJS\n```js\nvar $$ = require(\'nojquery\');\n```\n#### Global namespace\n```js\nvar $$ = window.NoJQuery;\n```\n\n#### API\n\n##### find :\n#\n```js\nvar result = $$(\'selector\').find(\'child-element\');\nconsole.log(result.elmts[0]);\n```\n##### addClass :\n#\n```js\n$$(\'selector\').addClass(\'some-class\');\n```\n##### hasClass :\n#\n```js\nvar bool = $$(\'selector\').hasClass(\'some-class\');\nconsole.log(bool);\n```\n##### removeClass :\n#\n```js\n$$(\'selector\').removeClass(\'some-class\');\n```\n##### contains :\n#\n```js\nvar result = $$(\'selector\').contains(\'some-selector\');\nconsole.log(result);\n```\n##### empty :\n#\n```js\n$$(\'selector\').empty();\n```\n##### text :\n#\n```js\n$$(\'selector\').text(\'Hello\');\n```\n##### html :\n#\n```js\n$$(\'selector\').html(\'<a href="/" > Link </a>\');\n```\n##### getAttr :\n#\n```js\nvar result = $$(\'selector\').getAttr(\'attrName\');\nconsole.log(result);\n```\n##### setAttr :\n#\n```js\n$$(\'selector\').setAttr(\'readonly\', 1);\n```\n##### removeAttr :\n#\n```js\n$$(\'selector\').removeAttr(\'readonly\');\n```\n##### remove :\n#\n```js\n$$(\'selector\').remove();\n```\n##### next :\n#\n```js\nvar result = $$(\'selector\').next();\nconsole.log(result.elmts[0]);\n```\n##### prev :\n#\n```js\nvar result = $$(\'selector\').prev();\nconsole.log(result.elmts[0]);\n```\n\n##### append :\n#\n```js\n$$(\'selector\').append(\'<div>Hello</div>\');\n$$(\'selector\').append($$(\'selector-elmt\'));\n```\n##### prepend :\n#\n```js\n$$(\'selector\').prepend(\'<div>Hello</div>\');\n$$(\'selector\').prepend($$(\'selector-elmt\'));\n```\n\n##### on :\n#\n```js\nfunction onButtonClick(evt) {\n    console.log(\'click\', evt.currentTarget);\n};\n$$(\'selector\').on(\'click\', onButtonClick);\n```\n##### off :\n#\n```js\n$$(\'selector\').off(\'click\', onButtonClick);\n```\n[npm-url]: https://www.npmjs.com/package/nojquery\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: 'b8b513604cf40feb51b06def7a196bac2ac21a22',
+17 silly publish   _id: 'nojquery@1.0.41',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: 'cd1dfe17f25f868f201cd27de31a52fedc043360',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name nojquery
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/nojquery
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/ion/.npm/nojquery/1.0.41/package.tgz
+25 verbose request uri https://registry.npmjs.org/nojquery
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 10:17:33
+28 verbose request using bearer token for auth
+29 verbose request id 49618dc4646457b8
+30 http request PUT https://registry.npmjs.org/nojquery
+31 http 403 https://registry.npmjs.org/nojquery
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '96',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Mon, 07 Dec 2015 12:17:36 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-atl6227-ATL',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1449490654.687116,VS0,VE1882' }
+33 verbose request invalidating /Users/ion/.npm/registry.npmjs.org/nojquery on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.0.41." : nojquery
+35 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid nojquery
+38 verbose cwd /Users/ion/Documents/NoJQuery
+39 error Darwin 14.5.0
+40 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+41 error node v4.2.2
+42 error npm  v2.14.7
+43 error code E403
+44 error "You cannot publish over the previously published version 1.0.41." : nojquery
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
