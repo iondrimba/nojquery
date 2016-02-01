@@ -481,10 +481,10 @@ describe('.append() Test', function() {
         setUpHTMLFixture();
     });
 
-    it('.list-append - should have 3 divs as children', function() {
+    it('.list-append li - should have 3 divs as children', function() {
         var $$ = NoJQuery;
         $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
-        var result = $$('.list-append').find('li').find('div');
+        var result = $$('.list-append').find('div');
         expect(result.elmts.length).toEqual(3);
     });
 });

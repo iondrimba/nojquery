@@ -15,12 +15,23 @@
     'use strict';
 
     function parseHTML(html) {
-        var t = document.createElement('template'),
+        var template,
             content,
             nodes;
 
-        t.innerHTML = html;
-        content = t.content || t.firstChild;
+        function supportsTemplate() {
+            return 'content' in document.createElement('template');
+        }
+
+        if (supportsTemplate()) {
+            template = document.createElement('template'),
+            content = template.content;
+        } else {
+            template = document.createElement('div-no-jquery'),
+            content = template;
+
+        }
+        template.innerHTML = html;                
         nodes = content.cloneNode(true);
 
         return nodes;
@@ -297,7 +308,7 @@
             }
         } catch (err) {
             throw new Error('prev:: ' + err.message);
-        } 
+        }
         return this;
     };
     NoJQuery.prototype.next = function() {
@@ -321,20 +332,22 @@
             textNode;
 
         try {
-            total = this.previousElmt.length;
+            total = this.elmts.length;
             textNode = isString(el);
 
             if (textNode === false) {
                 node = el.elmts[0];
             }
+            if (textNode) {
+                node = parseHTML(el);
+            }
+
+            if (total === 0) {
+                this.elmts[this.elmts.length - 1].appendChild(node);
+            }
 
             for (i; i < total; i++) {
-                if (textNode) {
-                    this.html(el);
-                } else {
-                    this.previousElmt[i].appendChild(node);
-                    node = el.elmts[0].cloneNode(true);
-                }
+                this.elmts[i].appendChild(node);
             }
         } catch (err) {
             throw new Error('append:: ' + err.message);
