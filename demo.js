@@ -156,10 +156,14 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     // //PREPEND
     function onPrependClick(evt) {
-        $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
+        $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-prepend').find('span').prev(),
-            link = $$('.list-prepend').find('a');
-        console.log(result.elmts[0], link.elmts[0]);
+            div = $$('.list-prepend').find('div');
+        console.log(result.elmts[0],div.elmts[0]);
+        // $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
+        // var result = $$('.list-prepend').find('span').prev(),
+        //     link = $$('.list-prepend').find('a');
+        // console.log(result.elmts[0], link.elmts[0]);
     };
 
     function onResetPrependClick(evt) {

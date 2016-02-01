@@ -530,7 +530,7 @@ describe('.prepend() Test', function() {
         $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-prepend').find('span').prev(),
             div = $$('.list-prepend').find('div');
-        expect(result.elmts[0]).toEqual(div.elmts[0]);
+        expect(div.elmts[0].innerText).toEqual(result.elmts[0].innerText);
     });
 });
 

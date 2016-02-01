@@ -26,13 +26,22 @@
         if (supportsTemplate()) {
             template = document.createElement('template'),
             content = template.content;
+            template.innerHTML = html;                
+            nodes = content.cloneNode(true);
         } else {
-            template = document.createElement('div-no-jquery'),
-            content = template;
+            var docfrag = document.createDocumentFragment();
 
+            template = document.createElement('nojquery');
+            template.innerHTML = html;
+
+            for (var i = 0; i < template.childNodes.length; i++) {
+                docfrag.appendChild(template.childNodes[i]);
+                i--;
+            }
+
+            content = docfrag;
+            nodes = content.cloneNode(true);
         }
-        template.innerHTML = html;                
-        nodes = content.cloneNode(true);
 
         return nodes;
     }
