@@ -15,13 +15,33 @@
     'use strict';
 
     function parseHTML(html) {
-        var t = document.createElement('template'),
+        var template,
             content,
             nodes;
 
-        t.innerHTML = html;
-        content = t.content || t.firstChild;
-        nodes = content.cloneNode(true);
+        function supportsTemplate() {
+            return 'content' in document.createElement('template');
+        }
+
+        if (supportsTemplate()) {
+            template = document.createElement('template'),
+            content = template.content;
+            template.innerHTML = html;                
+            nodes = content.cloneNode(true);
+        } else {
+            var docfrag = document.createDocumentFragment();
+
+            template = document.createElement('nojquery');
+            template.innerHTML = html;
+
+            for (var i = 0; i < template.childNodes.length; i++) {
+                docfrag.appendChild(template.childNodes[i]);
+                i--;
+            }
+
+            content = docfrag;
+            nodes = content.cloneNode(true);
+        }
 
         return nodes;
     }
@@ -297,7 +317,7 @@
             }
         } catch (err) {
             throw new Error('prev:: ' + err.message);
-        } 
+        }
         return this;
     };
     NoJQuery.prototype.next = function() {
@@ -321,20 +341,22 @@
             textNode;
 
         try {
-            total = this.previousElmt.length;
+            total = this.elmts.length;
             textNode = isString(el);
 
             if (textNode === false) {
                 node = el.elmts[0];
             }
+            if (textNode) {
+                node = parseHTML(el);
+            }
+
+            if (total === 0) {
+                this.elmts[this.elmts.length - 1].appendChild(node);
+            }
 
             for (i; i < total; i++) {
-                if (textNode) {
-                    this.html(el);
-                } else {
-                    this.previousElmt[i].appendChild(node);
-                    node = el.elmts[0].cloneNode(true);
-                }
+                this.elmts[i].appendChild(node);
             }
         } catch (err) {
             throw new Error('append:: ' + err.message);

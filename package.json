@@ -1,6 +1,6 @@
 {
   "name": "nojquery",
-  "version": "1.0.42",
+  "version": "1.0.50",
   "description": " (Work in Progress) Useful methods to replace jQuery",
   "main": "nojquery.js",
   "repository": {

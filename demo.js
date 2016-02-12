@@ -140,11 +140,9 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //APPEND
     function onAppendClick(evt) {
-        //$$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
-        //var result = $$('.list-append').find('li').find('div');
-       $$('.list-append').find('li').append($$('.link-append'));
-        var result = $$('.list-append').find('.link-append');
-        console.log($$('.link-append').elmts[0], result.elmts[0]);
+        $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        var result = $$('.list-append').find('div');
+        console.log(result.elmts, result.elmts.length);
     };
 
     function onResetAppendClick(evt) {
@@ -158,10 +156,14 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     // //PREPEND
     function onPrependClick(evt) {
-        $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
+        $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-prepend').find('span').prev(),
-            link = $$('.list-prepend').find('a');
-        console.log(result.elmts[0], link.elmts[0]);
+            div = $$('.list-prepend').find('div');
+        console.log(result.elmts[0],div.elmts[0]);
+        // $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
+        // var result = $$('.list-prepend').find('span').prev(),
+        //     link = $$('.list-prepend').find('a');
+        // console.log(result.elmts[0], link.elmts[0]);
     };
 
     function onResetPrependClick(evt) {
