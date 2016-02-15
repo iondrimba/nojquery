@@ -81,16 +81,11 @@ requirejs(['nojquery'], function(NoJQuery) {
         $$('.list-html').find('li').each(function(elmt, index) {
             $$(elmt).html('<a href="/" class="html-content"> Link - ' + index + '</a>');
         });
-
-        console.log($$('.list-html').find('a'));
     };
 
     function onResetHtmlClick(evt) {
-        $$('.list-html').find('li').each(function(elmt, index) {
-            console.log('reset html', $$(elmt).find('.html-content'));
-            //$$(elmt).find('.html-content').remove();
-            //$$(elmt).text('li');
-        });
+        $$('.list-html').find('li').find('a').remove();
+        $$('.list-html').find('li').text('li');
     };
     $$('#btn-html').on('click', onHtmlClick);
     $$('#btn-reset-html').on('click', onResetHtmlClick);

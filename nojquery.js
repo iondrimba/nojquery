@@ -68,19 +68,6 @@
                     this.currentSelector += ' .' + selector.parentNode.classList[0];
                 }
 
-                var index=-1;
-                for (var i = 0; i < selector.parentNode.childNodes.length; i++) {
-                    index++;
-                    if (selector.parentNode.childNodes[i] === selector) {
-                        //console.log(i, index);
-                        this.currentSelector += ' ' + selector.tagName.toLowerCase() + ':nth-child(' + i + ')';
-                        break;
-                    }else{
-                        //index-i;
-                    }
-                }
-
-
                 if (selector.classList.length) {
                     this.currentSelector += ' ' + selector.classList[0];
                 }
@@ -129,6 +116,7 @@
     };
     NoJQuery.prototype.each = function(callback) {
         Array.prototype.forEach.call(this.elmts, function(el, i) {
+            el['index'] = i;
             callback(el, i);
         });
     };
