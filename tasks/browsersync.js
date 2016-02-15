@@ -4,9 +4,10 @@ module.exports = function(grunt) {
         target: {
             default_options: {
                 bsFiles: {
-                    src: ["*.html"]
+                    src: ['*.js', '*.html']
                 },
                 options: {
+                    watchTask: true,
                     server: {
                         baseDir: ""
                     }

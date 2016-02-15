@@ -25,8 +25,8 @@
 
         if (supportsTemplate()) {
             template = document.createElement('template'),
-            content = template.content;
-            template.innerHTML = html;                
+                content = template.content;
+            template.innerHTML = html;
             nodes = content.cloneNode(true);
         } else {
             var docfrag = document.createDocumentFragment();
@@ -62,9 +62,33 @@
             if (isString(selector)) {
                 this.find(selector);
             } else {
+
+
+                if (selector.parentNode.classList.length) {
+                    this.currentSelector += ' .' + selector.parentNode.classList[0];
+                }
+
+                var index=-1;
+                for (var i = 0; i < selector.parentNode.childNodes.length; i++) {
+                    index++;
+                    if (selector.parentNode.childNodes[i] === selector) {
+                        //console.log(i, index);
+                        this.currentSelector += ' ' + selector.tagName.toLowerCase() + ':nth-child(' + i + ')';
+                        break;
+                    }else{
+                        //index-i;
+                    }
+                }
+
+
+                if (selector.classList.length) {
+                    this.currentSelector += ' ' + selector.classList[0];
+                }
                 this.elmts.push(selector);
             }
             this.length = this.elmts.length;
+
+
             var clone = {};
             clone.elmts = this.elmts;
             clone.length = this.length;
@@ -82,7 +106,6 @@
             i = 0;
 
         try {
-
             this.currentSelector += ' ' + selector;
             nodes = document.querySelectorAll(this.currentSelector);
             total = nodes.length;
@@ -275,7 +298,7 @@
             removed = [];
 
         try {
-            total = this.elmts.length;
+            total = this.length;
             for (i; i < total; i++) {
                 elmt = this.elmts[i];
                 elmt.parentNode.removeChild(elmt);

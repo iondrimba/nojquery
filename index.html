@@ -10,26 +10,81 @@
     <style>
     body {
         font-family: sans-serif;
+        padding: 20px;
+        background-color: #252323;
+        color: #fff;
+    }
+    
+    ul {
+        list-style: circle;
+    }
+    
+    hr {
+        color: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-bottom: solid 1px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.85);
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #0066FF;
+        color: white;
+        border-radius: 2px;
+        border: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all .3s;
+    }
+    
+    button:hover {
+        background-color: #074FBB;
+        transition: all .3s;
+    }
+    
+    button:active {
+        position: relative;
+        top: 1px;
+        left: 1px;
+    }
+    
+    button:focus {
+        outline: none;
+        background-color: #35FD58;
+        color: #072F14;
+    }
+    
+    button:active {}
+    
+    a {
+        margin-left: 5px;
+        margin-right: 5px;
+        color: inherit;
     }
     
     .colored {
-        background-color: green;
-        color: #fff;
+        background-color: #FFFFFF;
+        border-radius: 2px;
         padding: 10px;
+        color: #000;
     }
     </style>
 </head>
 
 <body>
     <h1>NoJQuery Demo</h1>
+    <!--FIND-->
     <h2>find</h2>
     <ul class="list-find">
         <li>li
-            <div>div<a href="">link</a></div>
+            <div>div<a href="">link find</a></div>
         </li>
     </ul>
     <button id="btn-find">find</button> (view console)
     <hr/>
+    <!--FIND FLUID-->
     <h2>fluid test</h2>
     <ul class="list-fluid">
         <li>li
@@ -42,7 +97,7 @@
                             <div>div<a href="">link</a></div>
                             <ul class="list-fluid-child">
                                 <li>li
-                                    <div>div<a class="child-link" href="">link</a></div>
+                                    <div>div<a class="child-link" href="">link fluid</a></div>
                                 </li>
                             </ul>
                         </li>
@@ -51,8 +106,9 @@
             </ul>
         </li>
     </ul>
-    <button id="btn-find">find</button> (view console)
+    <button id="btn-find-fluid">find fluid</button> (view console)
     <hr/>
+    <!--ADD CLASS-->
     <h2>addClass</h2>
     <ul class="list">
         <li>li
@@ -62,6 +118,7 @@
     <button id="btn-addclass">addClass</button>
     <button id="btn-reset-addclass">reset</button>
     <hr/>
+    <!--REMOVE CLASS-->
     <h2>removeClass</h2>
     <ul class="list-remove">
         <li class="colored">li
@@ -71,6 +128,7 @@
     <button id="btn-removeclass">removeClass</button>
     <button id="btn-reset-removeclass">reset</button>
     <hr/>
+    <!--HAS CLASS-->
     <h2>hasClass</h2>
     <ul class="list-hasclass">
         <li class="colored">li
@@ -79,6 +137,7 @@
     </ul>
     <button id="btn-hasclass">hasClass</button> (view console)
     <hr/>
+    <!--CONTAINS-->
     <h2>contains</h2>
     <ul class="list-contains">
         <li class="colored">li
@@ -87,6 +146,7 @@
     </ul>
     <button id="btn-contains">contains</button> (view console)
     <hr/>
+    <!--EMPTY-->
     <h2>empty</h2>
     <ul class="list-empty">
         <li>li
@@ -96,6 +156,7 @@
     <button id="btn-empty">empty</button>
     <button id="btn-reset-empty">reset</button>
     <hr/>
+    <!--TEXT CONTENT-->
     <h2>textContent</h2>
     <ul class="list-text">
         <li>li
@@ -105,6 +166,7 @@
     <button id="btn-text">text</button>
     <button id="btn-reset-text">reset</button>
     <hr/>
+    <!--HTML CONTENT-->
     <h2>htmlContent</h2>
     <ul class="list-html">
         <li>li
@@ -149,7 +211,7 @@
         <li>li
         </li>
     </ul>
-    <button id="btn-removeelmt">removeElmt</button>
+    <button id="btn-removeelmt">remove Elmt</button>
     <button id="btn-reset-removeelmt">reset</button>
     <hr/>
     <h2>next</h2>
@@ -197,7 +259,7 @@
     <br>
     <br>
     <button id="btn-addlistener">add Listener</button>
-    <button id="btn-removelistener">remove Listener</button> (view console)
+    <button id="btn-removelistener">remove Listener</button>
     <hr/>
     <br>
     <br>

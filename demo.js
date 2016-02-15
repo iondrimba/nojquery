@@ -3,10 +3,17 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //FIND
     function onFindClick(evt) {
-        var result = $$('li').find('=');
+        var result = $$('li').find('a');
         console.log(result.elmts[0]);
     };
     $$('#btn-find').on('click', onFindClick);
+
+    //FIND FLUID
+    function onFindFluidClick(evt) {
+        var result = $$('.list-fluid').find('li').find('li').find('li').find('li').find('a');
+        console.log(result.elmts[0]);
+    };
+    $$('#btn-find-fluid').on('click', onFindFluidClick);
 
     //ADD CLASS
     function onAddClassClick(evt) {
@@ -42,18 +49,18 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //CONTAINS
     function onContainsClick(evt) {
-        var result = $$('.list-contains').contains('.colored1');
+        var result = $$('.list-contains').contains('.colored');
         console.log(result);
     };
     $$('#btn-contains').on('click', onContainsClick);
 
     //EMPTY
     function onEmptyClick(evt) {
-        $$('.list-empty').find('a').empty();
+        $$('.list-empty').find('li').empty();
     };
 
     function onResetEmptyClick(evt) {
-        $$('.list-empty').find('a').text('link');
+        $$('.list-empty').find('li').append('li<div>div<a href="/">link</a></div>');
     };
     $$('#btn-empty').on('click', onEmptyClick);
     $$('#btn-reset-empty').on('click', onResetEmptyClick);
@@ -80,8 +87,9 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     function onResetHtmlClick(evt) {
         $$('.list-html').find('li').each(function(elmt, index) {
-            $$(elmt).find('.html-content').remove();
-            $$(elmt).text('li');
+            console.log('reset html', $$(elmt).find('.html-content'));
+            //$$(elmt).find('.html-content').remove();
+            //$$(elmt).text('li');
         });
     };
     $$('#btn-html').on('click', onHtmlClick);
@@ -125,7 +133,7 @@ requirejs(['nojquery'], function(NoJQuery) {
     function onNextClick(evt) {
         var result = $$('.list-next').find('.btn-one').next(),
             nextElmt = $$(result.elmts[0]);
-        console.log(nextElmt.elmts[0], $$('.list-next').find('.btn-two').elmts[0]);
+        console.log(nextElmt.elmts[0]);
     };
 
     $$('#btn-next').on('click', onNextClick);
@@ -142,13 +150,12 @@ requirejs(['nojquery'], function(NoJQuery) {
     function onAppendClick(evt) {
         $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-append').find('div');
-        console.log(result.elmts, result.elmts.length);
     };
 
     function onResetAppendClick(evt) {
+        var divs = $$('.list-append').find('li').find('div').length;
+        console.log($$('.list-append').find('li').find('div'));
         $$('.list-append').find('li').find('div').remove();
-        $$('.list-append').find('li').find('.link-append').remove();
-        $$('.list-append').find('li').append('<span>li</span>');
     };
 
     $$('#btn-append').on('click', onAppendClick);
@@ -157,13 +164,6 @@ requirejs(['nojquery'], function(NoJQuery) {
     // //PREPEND
     function onPrependClick(evt) {
         $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
-        var result = $$('.list-prepend').find('span').prev(),
-            div = $$('.list-prepend').find('div');
-        console.log(result.elmts[0],div.elmts[0]);
-        // $$('.list-prepend').find('li').find('span').prepend($$('.link-prepend'));
-        // var result = $$('.list-prepend').find('span').prev(),
-        //     link = $$('.list-prepend').find('a');
-        // console.log(result.elmts[0], link.elmts[0]);
     };
 
     function onResetPrependClick(evt) {
@@ -175,7 +175,7 @@ requirejs(['nojquery'], function(NoJQuery) {
 
     //ADD /REMOVE LISTNER
     function onButtonClick(evt) {
-        console.log('click', evt.currentTarget);
+        alert('click');
     };
 
     function onAddListenerClick(evt) {
