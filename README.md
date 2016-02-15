@@ -131,3 +131,4 @@ $$('selector').on('click', onButtonClick);
 $$('selector').off('click', onButtonClick);
 ```
 [npm-url]: https://www.npmjs.com/package/nojquery
+[Live Demo]: http://iondrimba.github.io/NoJQuery/
