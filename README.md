@@ -1,7 +1,7 @@
 # NoJQuery 
 Used for personal projects/simple apps with little DOM interactions.
 
-[![Travis build status](https://travis-ci.org/iondrimba/NoJQuery.svg?branch=master)](https://travis-ci.org/iondrimba/NoJQuery) [![Coverage Status](https://coveralls.io/repos/iondrimba/NoJQuery/badge.svg?branch=master&service=github)](https://coveralls.io/github/iondrimba/NoJQuery?branch=master)
+[![Travis build status](https://travis-ci.org/iondrimba/nojquery.svg?branch=master)](https://travis-ci.org/iondrimba/nojquery) [![Coverage Status](https://coveralls.io/repos/iondrimba/nojquery/badge.svg?branch=master&service=github)](https://coveralls.io/github/iondrimba/nojquery?branch=master)
 
 [Live Demo]
 
