@@ -3,7 +3,7 @@ Used for personal projects/simple apps with little DOM interactions.
 
 [![Travis build status](https://travis-ci.org/iondrimba/nojquery.svg?branch=master)](https://travis-ci.org/iondrimba/nojquery) [![Coverage Status](https://coveralls.io/repos/iondrimba/nojquery/badge.svg?branch=master&service=github)](https://coveralls.io/github/iondrimba/nojquery?branch=master)
 
-[Live Demo]
+### [Live Demo]
 
 Minified version: 6kb
 
@@ -133,4 +133,4 @@ $$('selector').on('click', onButtonClick);
 $$('selector').off('click', onButtonClick);
 ```
 [npm-url]: https://www.npmjs.com/package/nojquery
-[Live Demo]: http://iondrimba.github.io/NoJQuery/
+[Live Demo]: http://iondrimba.github.io/nojquery/
