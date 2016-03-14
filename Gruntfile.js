@@ -14,6 +14,6 @@ module.exports = function(grunt) {
         coveralls: require('./tasks/coveralls')().target
     });
 
-    grunt.registerTask('test', ['eslint', 'copy',  'uglify', 'compress', 'jasmine', 'coveralls']);
+    grunt.registerTask('test', ['eslint', 'copy', 'uglify', 'compress', 'jasmine']);
     grunt.registerTask('default', ['eslint', 'browserSync', 'watch']);
 };

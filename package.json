@@ -1,23 +1,24 @@
 {
   "name": "nojquery",
-  "version": "1.0.50",
-  "description": " (Work in Progress) Useful methods to replace jQuery",
+  "version": "1.0.60",
+  "description": "Useful methods to replace jQuery",
   "main": "nojquery.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iondrimba/NoJQuery.git"
+    "url": "git+https://github.com/iondrimba/nojquery.git"
   },
   "keywords": [
     "NoJQuery",
+    "Javascript",
     "jQuery",
     "DOM"
   ],
-  "author": "Ion Drimba Filho <iondrimba@gmail.com> (http://iondrimbafilho.me)",
-  "license": "ISC",
+  "author": "Ion D. Filho <iondrimba@gmail.com> (https://iondrimbafilho.me)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iondrimba/NoJQuery/issues"
+    "url": "https://github.com/iondrimba/nojquery/issues"
   },
-  "homepage": "https://github.com/iondrimba/NoJQuery#readme",
+  "homepage": "https://github.com/iondrimba/nojquery#readme",
   "dependencies": {},
   "devDependencies": {
     "eslint ": " ^ 1.8.0 ",

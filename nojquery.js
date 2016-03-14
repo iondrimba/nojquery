@@ -24,8 +24,8 @@
         }
 
         if (supportsTemplate()) {
-            template = document.createElement('template'),
-                content = template.content;
+            template = document.createElement('template');
+            content = template.content;
             template.innerHTML = html;
             nodes = content.cloneNode(true);
         } else {
@@ -62,8 +62,6 @@
             if (isString(selector)) {
                 this.find(selector);
             } else {
-
-
                 if (selector.parentNode.classList.length) {
                     this.currentSelector += ' .' + selector.parentNode.classList[0];
                 }
@@ -81,8 +79,8 @@
             clone.length = this.length;
             clone.currentSelector = this.currentSelector;
             clone.previousElmt = this.previousElmt;
-
             clone['__proto__'] = NoJQuery.prototype;
+
             return clone;
         }.bind(this);
     };
@@ -97,7 +95,7 @@
             nodes = document.querySelectorAll(this.currentSelector);
             total = nodes.length;
             if (total) {
-                this.previousElmt = this.elmts;
+                this.previousElmt = this.elmts.slice();
                 this.elmts = [];
                 this.length = total;
             } else {
