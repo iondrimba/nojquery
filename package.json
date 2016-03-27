@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/iondrimba/nojquery.git"
   },
+  "scripts":{
+    "test":"grunt test"  
+  },
   "keywords": [
     "NoJQuery",
     "Javascript",

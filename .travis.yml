@@ -4,6 +4,6 @@ node_js:
 - '4.2.2'
 before_script:
   - npm install -g grunt grunt-cli
-script: grunt test
+script: npm test
 after_script:
 - grunt coveralls

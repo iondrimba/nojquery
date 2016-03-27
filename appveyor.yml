@@ -1,6 +1,5 @@
 init:
   - git config --global core.autocrlf true
-# What combinations to test
 environment:
   matrix:
     - nodejs_version: "4.2.2"
@@ -11,11 +10,7 @@ install:
   - npm install -g grunt-cli
   - npm install
 test_script:
-  # Output useful info for debugging.
-  - node --version && npm --version
-  # We test multiple Windows shells because of prior stdout buffering issues
-  # filed against Grunt. https://github.com/joyent/node/issues/3584  
-  - grunt test
+  - npm test
 build: off
 matrix:
   fast_finish: true
