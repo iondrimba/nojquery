@@ -34,8 +34,9 @@
             template = document.createElement('nojquery');
             template.innerHTML = html;
 
-            for (var i = 0; i < template.childNodes.length; i++) {
-                docfrag.appendChild(template.childNodes[i]);
+            var total = template.childNodes.length;
+            for (var i = 0; i < total; i++) {
+                docfrag.appendChild(template.childNodes[i].cloneNode(true));
             }
 
             content = docfrag;
