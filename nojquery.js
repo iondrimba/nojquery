@@ -36,7 +36,6 @@
 
             for (var i = 0; i < template.childNodes.length; i++) {
                 docfrag.appendChild(template.childNodes[i]);
-                i--;
             }
 
             content = docfrag;
