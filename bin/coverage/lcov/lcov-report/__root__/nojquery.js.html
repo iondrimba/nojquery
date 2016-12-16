@@ -464,7 +464,8 @@
 437
 438
 439
-440</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+440
+441</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -501,7 +502,7 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -903,6 +904,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿(function(root, factory) {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof exports === 'object') {
         // CommonJS
@@ -910,7 +912,7 @@
     } else <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof define === 'function' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >define.amd)</span> {
         // AMD
 <span class="cstat-no" title="statement not covered" >        define([], <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >            return (root.NoJQuery = factory());</span>
+<span class="cstat-no" title="statement not covered" >            return root.NoJQuery = factory();</span>
         });
     } else {
         // Global Variables
@@ -930,7 +932,7 @@
 &nbsp;
         <span class="missing-if-branch" title="if path not taken" >I</span>if (supportsTemplate()) {
 <span class="cstat-no" title="statement not covered" >            template = document.createElement('template');</span>
-<span class="cstat-no" title="statement not covered" >            content = template.content;</span>
+<span class="cstat-no" title="statement not covered" >            content = template.content;            </span>
 <span class="cstat-no" title="statement not covered" >            template.innerHTML = html;</span>
 <span class="cstat-no" title="statement not covered" >            nodes = content.cloneNode(true);</span>
         } else {
@@ -939,9 +941,9 @@
             template = document.createElement('nojquery');
             template.innerHTML = html;
 &nbsp;
-            for (var i = 0; i &lt; template.childNodes.length; i++) {
-                docfrag.appendChild(template.childNodes[i]);
-                i--;
+            var total =  template.childNodes.length;
+            for (var i = 0; i &lt; total; i++) {
+                docfrag.appendChild(template.childNodes[i].cloneNode(true));                
             }
 &nbsp;
             content = docfrag;
@@ -952,9 +954,9 @@
     }
 &nbsp;
     function isString(obj) {
-        var result = (typeof obj === 'string');
+        var result = typeof obj === 'string';
         return result;
-    };
+    }
 &nbsp;
     function NoJQuery() {
 &nbsp;
@@ -988,7 +990,7 @@
 &nbsp;
             return clone;
         }.bind(this);
-    };
+    }
 &nbsp;
     NoJQuery.prototype.find = function(selector) {
         var total = 0,
@@ -1122,7 +1124,7 @@
         try {
             total = this.elmts.length;
             for (i; i &lt; total; i++) {
-                if (string &amp;&amp; (string.length &gt; 0)) {
+                if (string &amp;&amp; string.length &gt; 0) {
                     this.elmts[i].textContent = string;
                 } else {
                     result += this.elmts[i].textContent;
@@ -1182,18 +1184,18 @@
         }
         return this;
     };
-    NoJQuery.prototype.remove = function(elmt) {
+    NoJQuery.prototype.remove = function() {
         var total = 0,
             i = 0,
-            elmt = {},
+            el = {},
             removed = [];
 &nbsp;
         try {
             total = this.length;
             for (i; i &lt; total; i++) {
-                elmt = this.elmts[i];
-                elmt.parentNode.removeChild(elmt);
-                removed[i] = elmt;
+                el = this.elmts[i];
+                el.parentNode.removeChild(el);
+                removed[i] = el;
             }
         } catch (err) {
             throw new Error('remove:: ' + err.message);
@@ -1220,7 +1222,7 @@
         }
         return this;
     };
-    NoJQuery.prototype.prev = function(elmt) {
+    NoJQuery.prototype.prev = function() {
         var total = 0,
             i = 0;
 &nbsp;
@@ -1325,7 +1327,7 @@
 &nbsp;
         return this;
     };
-    NoJQuery.prototype.off = function(eventName, eventHandler) {
+    NoJQuery.prototype.off = function(eventName) {
         var total = 0,
             i = 0;
         try {
@@ -1342,12 +1344,13 @@
         return this;
     };
     return new NoJQuery();
-}));</pre></td></tr>
+}));
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 27 2016 11:35:45 GMT-0300 (Hora oficial do Brasil)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Dec 16 2016 17:29:01 GMT-0200 (Horário brasileiro de verão)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>

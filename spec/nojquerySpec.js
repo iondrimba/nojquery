@@ -483,7 +483,7 @@ describe('.append() Test', function() {
 
     it('.list-append li - should have 3 divs as children', function() {
         var $$ = NoJQuery;
-        $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');
+        $$('.list-append').find('li').append('<div>Hello</div><div>Hello</div><div>Hello</div>');        
         var result = $$('.list-append').find('div');
         expect(result.elmts.length).toEqual(3);
     });
@@ -530,6 +530,7 @@ describe('.prepend() Test', function() {
         $$('.list-prepend').find('li').find('span').prepend('<div>Hello</div><div>Hello</div><div>Hello</div>');
         var result = $$('.list-prepend').find('span').prev(),
             div = $$('.list-prepend').find('div');
+
         expect(div.elmts[0].innerText).toEqual(result.elmts[0].innerText);
     });
 });

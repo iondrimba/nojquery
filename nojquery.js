@@ -5,7 +5,7 @@
     } else if (typeof define === 'function' && define.amd) {
         // AMD
         define([], function() {
-            return (root.NoJQuery = factory());
+            return root.NoJQuery = factory();
         });
     } else {
         // Global Variables
@@ -25,7 +25,7 @@
 
         if (supportsTemplate()) {
             template = document.createElement('template');
-            content = template.content;
+            content = template.content;            
             template.innerHTML = html;
             nodes = content.cloneNode(true);
         } else {
@@ -34,8 +34,9 @@
             template = document.createElement('nojquery');
             template.innerHTML = html;
 
-            for (var i = 0; i < template.childNodes.length; i++) {
-                docfrag.appendChild(template.childNodes[i]);
+            var total =  template.childNodes.length;
+            for (var i = 0; i < total; i++) {
+                docfrag.appendChild(template.childNodes[i].cloneNode(true));                
             }
 
             content = docfrag;
@@ -46,9 +47,9 @@
     }
 
     function isString(obj) {
-        var result = (typeof obj === 'string');
+        var result = typeof obj === 'string';
         return result;
-    };
+    }
 
     function NoJQuery() {
 
@@ -82,7 +83,7 @@
 
             return clone;
         }.bind(this);
-    };
+    }
 
     NoJQuery.prototype.find = function(selector) {
         var total = 0,
@@ -216,7 +217,7 @@
         try {
             total = this.elmts.length;
             for (i; i < total; i++) {
-                if (string && (string.length > 0)) {
+                if (string && string.length > 0) {
                     this.elmts[i].textContent = string;
                 } else {
                     result += this.elmts[i].textContent;
@@ -276,18 +277,18 @@
         }
         return this;
     };
-    NoJQuery.prototype.remove = function(elmt) {
+    NoJQuery.prototype.remove = function() {
         var total = 0,
             i = 0,
-            elmt = {},
+            el = {},
             removed = [];
 
         try {
             total = this.length;
             for (i; i < total; i++) {
-                elmt = this.elmts[i];
-                elmt.parentNode.removeChild(elmt);
-                removed[i] = elmt;
+                el = this.elmts[i];
+                el.parentNode.removeChild(el);
+                removed[i] = el;
             }
         } catch (err) {
             throw new Error('remove:: ' + err.message);
@@ -314,7 +315,7 @@
         }
         return this;
     };
-    NoJQuery.prototype.prev = function(elmt) {
+    NoJQuery.prototype.prev = function() {
         var total = 0,
             i = 0;
 
@@ -419,7 +420,7 @@
 
         return this;
     };
-    NoJQuery.prototype.off = function(eventName, eventHandler) {
+    NoJQuery.prototype.off = function(eventName) {
         var total = 0,
             i = 0;
         try {

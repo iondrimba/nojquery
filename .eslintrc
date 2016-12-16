@@ -1,0 +1,28 @@
+{
+	"globals": {
+		"jQuery": false,
+		"$": false,
+		"define": true,
+		"requirejs": true
+	},
+	"extends": [
+		"eslint:recommended"
+	],
+	"env": {
+		"browser": true,
+		"es6": false,
+		"node": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 5
+	},
+	"rules": {
+		"eqeqeq": 1,
+		"curly": 2,
+		"no-console": 0,
+		"quotes": [
+			2,
+			"single"
+		]
+	}
+}

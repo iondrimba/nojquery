@@ -1,8 +1,8 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     return task = {
         target: {
-           target: ['nojquery.js', 'gruntfile.js', 'demo.js']
+            target: ['./nojquery.js', './demo.js']
         }
     }
 };
