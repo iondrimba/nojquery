@@ -18,7 +18,7 @@ module.exports = function (config) {
       ],
     },
     preprocessors: {
-      '/nojquery.js': ['coverage'],
+      './nojquery.js': ['coverage'],
       'spec/**/*.html': ['html2js']
     },
     reporters: ['spec', 'coverage', 'threshold'],
