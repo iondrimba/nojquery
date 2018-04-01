@@ -126,17 +126,13 @@
       throw new Error('className not a String:: ' + className.toString());
     }
 
-    try {
-      total = this.elmts.length;
-      for (i; i < total; i++) {
-        if (this.elmts[i].classList && this.elmts[i].classList.contains) {
-          this.elmts[i].classList.add(className);
-        } else {
-          this.elmts[i].className += ' ' + className;
-        }
+    total = this.elmts.length;
+    for (i; i < total; i++) {
+      if (this.elmts[i].classList && this.elmts[i].classList.contains) {
+        this.elmts[i].classList.add(className);
+      } else {
+        this.elmts[i].className += ' ' + className;
       }
-    } catch (err) {
-      throw new Error('addClass:: ' + err.message);
     }
 
     return this;
@@ -151,17 +147,13 @@
       throw new Error('className not a String:: ' + className.toString());
     }
 
-    try {
-      total = this.elmts.length;
-      for (i; i < total; i++) {
-        if (this.elmts[i].classList && this.elmts[i].classList.contains) {
-          result = this.elmts[i].classList.contains(className);
-        } else {
-          result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
-        }
+    total = this.elmts.length;
+    for (i; i < total; i++) {
+      if (this.elmts[i].classList && this.elmts[i].classList.contains) {
+        result = this.elmts[i].classList.contains(className);
+      } else {
+        result = new RegExp('(^| )' + className + '( |$)', 'gi').test(this.elmts[i].className);
       }
-    } catch (err) {
-      throw new Error('hasClass:: ' + err.message);
     }
 
     return result;
@@ -174,19 +166,16 @@
       throw new Error('className not a String:: ' + className.toString());
     }
 
-    try {
-      total = this.elmts.length;
-      for (i; i < total; i++) {
-        if (this.elmts[i].classList && this.elmts[i].classList.remove) {
-          this.elmts[i].classList.remove(className);
-        } else {
-          this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-        }
-      }
 
-    } catch (err) {
-      throw new Error('removeClass:: ' + err.message);
+    total = this.elmts.length;
+    for (i; i < total; i++) {
+      if (this.elmts[i].classList && this.elmts[i].classList.remove) {
+        this.elmts[i].classList.remove(className);
+      } else {
+        this.elmts[i].className = this.elmts[i].className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+      }
     }
+
     return this;
   };
   NoJQuery.prototype.contains = function (selector) {
