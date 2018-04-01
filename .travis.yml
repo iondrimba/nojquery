@@ -2,8 +2,16 @@ sudo: required
 language: node_js
 node_js:
 - '8'
+env:
+  global:
+    - CC_TEST_REPORTER_ID=52f4c0ed6c6705a114562469fff08bbde00d053f7af7d85291c4b6a785743b51
+before_install:
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- ./cc-test-reporter before-build
 before_script:
   - npm install -g grunt grunt-cli
 script: npm test
 after_script:
+- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 - grunt coveralls
