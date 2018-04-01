@@ -1,28 +1,35 @@
 {
-	"globals": {
-		"jQuery": false,
-		"$": false,
-		"define": true,
-		"requirejs": true
-	},
-	"extends": [
-		"eslint:recommended"
-	],
-	"env": {
-		"browser": true,
-		"es6": false,
-		"node": true
-	},
-	"parserOptions": {
-		"ecmaVersion": 5
-	},
-	"rules": {
-		"eqeqeq": 1,
-		"curly": 2,
-		"no-console": 0,
-		"quotes": [
-			2,
-			"single"
-		]
-	}
+  "globals": {
+    "jQuery": false,
+    "$": false,
+    "define": true,
+    "requirejs": true,
+    "describe": true,
+    "NoJQuery": true,
+    "beforeEach": true,
+    "it": true,
+    "__html__": true,
+    "expect": true,
+    "loadFixtures": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es6": false,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 5
+  },
+  "rules": {
+    "eqeqeq": 1,
+    "curly": 2,
+    "no-console": 0,
+    "quotes": [
+      2,
+      "single"
+    ]
+  }
 }

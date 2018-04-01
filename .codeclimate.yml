@@ -1,0 +1,10 @@
+exclude_patterns:
+- "node_modules/"
+- "spec/"
+- "dist/"
+- "bin/"
+- "tasks/"
+- "build"
+- "Gruntfile.js"
+- "require.js"
+- "demo.js"
